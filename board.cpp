@@ -7,7 +7,9 @@ board::board(int radius){
     this->center= new_hex;
     hexagon* current_hex=this->center;
     for(int i=2; i<=radius; i++){
-        current_hex=current_hex->direction[0];
+        new_hex=new hexagon();
+
+        current_hex=current_hex->direction[0]=new_hex;
         new_hex=new hexagon();
         current_hex->direction[0]= new_hex;
         new_hex->direction[4]=current_hex;
