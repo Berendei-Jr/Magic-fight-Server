@@ -1,7 +1,6 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-
 class object
 {
     public:
@@ -12,5 +11,4 @@ class object
 
     private:
 };
-
 #endif // OBJECT_H
