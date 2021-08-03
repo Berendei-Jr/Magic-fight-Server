@@ -10,7 +10,7 @@ class hexagon
         void link(hexagon* link_hex, int direction);
 
         int lock_status;
-        //std::list <object*>  hex_objects;
+        std::list <int>  hex_objects;//std::list <object*>  hex_objects;
 };
 class board
 {
