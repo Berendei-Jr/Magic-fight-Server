@@ -7,6 +7,7 @@ class hexagon
     public:
         hexagon();
         hexagon** direction= new hexagon*[6];
+        void link(hexagon* link_hex, int direction);
 
         int lock_status;
         //std::list <object*>  hex_objects;
