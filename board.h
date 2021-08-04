@@ -1,7 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
-#include <list>
 #include "object.h"
+#include <list>
 class hexagon
 {
     public:
@@ -20,11 +20,9 @@ class board
         board(int radius);
         int radius;
         hexagon* center;
+
         hexagon GetHexagon(int x, int y);
-
         void print();
-        hexagon* HexByCoordinates(int x, int y){
-
-        }
+        hexagon* HexByCoordinates(int x, int y);
 };
 #endif // BOARD_H

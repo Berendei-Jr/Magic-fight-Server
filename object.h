@@ -7,6 +7,7 @@ class object
         object();
         virtual ~object();
 
+
     protected:
 
     private:
