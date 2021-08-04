@@ -6,6 +6,10 @@ void hexagon::link(hexagon* link_hex, int direction){
     this->direction[direction]=link_hex;
     link_hex->direction[(direction+3)%6]=this;
 }
+hexagon* hexagon::NextHex(int direction)
+{
+    return this->direction[direction];
+}
 board::board(int radius){
     hexagon* new_hex=new hexagon();
     this->center= new_hex;
@@ -36,5 +40,43 @@ board::board(int radius){
                 current_hex=current_hex->direction[(2+j)%6];
             }
         }
+    }
+}
+
+void board::print()
+{
+    char* A = new char[this->tadius*4-3];
+    int k;
+    hexagon* current_hex;
+    for(int i=0; i<radius; i++)
+    {
+        for(k=0; k<i; k++){
+
+        }
+        k=radius-1+i;
+        for(int j=0; j<radius+i; j++)
+        {
+
+        }
+    }
+}
+hexagon* board::HexByCoordinates(int x, int y)
+{
+    hexagon* current_hex=this->center;
+    for(int i=0; i<x; i++)
+    {
+        current_hex->NextHex(3);
+    }
+    for(int i=0; i<-x; i++)
+    {
+        current_hex->NextHex(0);
+    }
+    for(int i=0; i<y; i++)
+    {
+        current_hex->NextHex(2);
+    }
+    for(int i=0; i<-y; i++)
+    {
+        current_hex->NextHex(4);
     }
 }

@@ -7,10 +7,12 @@ class hexagon
     public:
         hexagon();
         hexagon** direction= new hexagon*[6];
-        void link(hexagon* link_hex, int direction);
-
         int lock_status;
         std::list <int>  hex_objects;//std::list <object*>  hex_objects;
+
+        void link(hexagon* link_hex, int direction);
+        hexagon* NextHex(int direction);
+
 };
 class board
 {
@@ -19,5 +21,10 @@ class board
         int radius;
         hexagon* center;
         hexagon GetHexagon(int x, int y);
+
+        void print();
+        hexagon* HexByCoordinates(int x, int y){
+
+        }
 };
 #endif // BOARD_H
