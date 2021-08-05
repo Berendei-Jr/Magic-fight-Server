@@ -4,7 +4,7 @@
 hexagon::hexagon(){
     this->lock_status=0;
     this->hex_objects={};
-    this->direction[7]=this;
+    //this->direction[7]=this;
 }
 
 void hexagon::link(hexagon* link_hex, int direction){

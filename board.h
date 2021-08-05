@@ -6,7 +6,7 @@ class hexagon
 {
     public:
         hexagon();
-        hexagon** direction= new hexagon*[7];
+        hexagon** direction= new hexagon*[6];
         int lock_status;
         std::list <object*>  hex_objects;
 
