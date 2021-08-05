@@ -8,7 +8,7 @@ class hexagon
         hexagon();
         hexagon** direction= new hexagon*[6];
         int lock_status;
-        std::list <int>  hex_objects;//std::list <object*>  hex_objects;
+        std::list <object*>  hex_objects;
 
         void link(hexagon* link_hex, int direction);
         hexagon* NextHex(int direction);

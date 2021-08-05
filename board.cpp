@@ -4,8 +4,6 @@
 hexagon::hexagon(){
     this->lock_status=0;
     this->hex_objects={};
-    //this->hex_objects.push_back(0);
-    //this->hex_objects.pop_back();
 }
 
 void hexagon::link(hexagon* link_hex, int direction){

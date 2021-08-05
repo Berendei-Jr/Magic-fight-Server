@@ -1,7 +1,7 @@
-#include "board.h"
 #include <iostream>
 #include <map>
-
+#include "object.h"
+#include "board.h"
 int main()
 {
     const int radius = 3;
