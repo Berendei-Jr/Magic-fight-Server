@@ -1,19 +1,18 @@
-#include "board.h"
 #include <iostream>
 #include <map>
-
+#include "object.h"
+#include "board.h"
 int main()
 {
-    board B(3);
+    const int radius = 3;
+    board B(radius);
     char n;
-    std::map <char, int> direct = {{'a', 0}, {'w', 1}, {'e', 2}, {'d', 3}, {'x', 4}, {'z', 5}};
-    hexagon* current_hex=B.center;
+    std::map <char, int> direct = {{0, 6}, {'a', 0}, {'w', 1}, {'e', 2}, {'d', 3}, {'x', 4}, {'z', 5}};
+    hero H(B.center);
     while(1){
-        for(int i=0; i<6;i++){
-            std::cout<<current_hex->direction[i]<<std::endl;
-        }
+        B.print();
         std::cout<<std::endl;
         std::cin>>n;
-        current_hex=current_hex->direction[direct[n]];
+        H.move(direct[n]);
     }
 }
