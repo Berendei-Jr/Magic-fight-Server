@@ -4,6 +4,7 @@
 hexagon::hexagon(){
     this->lock_status=0;
     this->hex_objects={};
+    this->direction[7]=this;
 }
 
 void hexagon::link(hexagon* link_hex, int direction){
@@ -16,11 +17,11 @@ hexagon* hexagon::NextHex(int direction)
 }
 board::board(int radius){
     this->radius=radius;
-    hexagon* new_hex=new hexagon();
+    hexagon* new_hex = new hexagon();
     this->center= new_hex;
     hexagon* current_hex=this->center;
     for(int i = 0; i<6; i++){
-        new_hex=new hexagon();
+        new_hex = new hexagon();
         this->center->link(new_hex, (0+i)%6);
     }
     for(int i=0; i<6; i++){
@@ -77,19 +78,19 @@ void board::print()
         }
         std::cout<<std::endl;
     }
-    for(int i=this->radius-2; i>=0; i--)
+    for(int i=1; i<this->radius; i++)
     {
         char* A = new char[this->radius*4-3];
-        current_hex=this->HexByCoordinates(-i, this->radius-i-1);
-        k=this->radius-1-i;
-        for(int j=0; j<radius+i; j++)
+        current_hex=this->HexByCoordinates(-this->radius+1, -i);
+        k=i;
+        for(int j=0; j<radius*2-1-i; j++)
         {
             if (current_hex->hex_objects.size()==0)
             {
                 A[k]='+';
             } else
             {
-                A[k]='0';
+                A[k]=current_hex->hex_objects.front()->icon;
             }
             k+=2;
             current_hex= current_hex->NextHex(3);
