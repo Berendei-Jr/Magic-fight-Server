@@ -12,6 +12,7 @@ int main()
     std::map <char, int> :: iterator it;
     hero H(B.center);
     while(1){
+        ks::clear();
         B.print();
         std::cout<<std::endl;
         std::cin>>d;
