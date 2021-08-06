@@ -1,19 +1,26 @@
 #include "object.h"
 #include "board.h"
-object::object(hexagon* position){
+//#include "actions.h"
+object::object(hexagon* position)
+{
     this->position=position;
     position->hex_objects.push_back(this);
 }
-hero::hero(hexagon* position):object(position){
+
+hero::hero(hexagon* position, ActionsList SkillName):object(position)
+{
     this->icon='0';
     this->health=100;
+    switch (SkillName)
+    {
+    case Step:
+        this->skill=new step(this);
+        break;
+    }
 }
-void hero::move(int direction){
-    this->position->hex_objects.remove(this);
-    this->position=this->position->NextHex(direction);
-    this->position->hex_objects.push_back(this);
-}
+
 hero::~hero(){}
+
 void hero::destroy(){
     this->position->hex_objects.remove(this);
     this->~hero();
