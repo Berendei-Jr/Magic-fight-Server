@@ -10,7 +10,7 @@ int main()
     char d;
     std::map <char, int> direct = {{'a', 0}, {'w', 1}, {'e', 2}, {'d', 3}, {'x', 4}, {'z', 5}, {'s', 6}};
     std::map <char, int> :: iterator it;
-    hero H(B.center);
+    hero H(B.center, Step);
     while(1){
         ks::clear();
         B.print();
@@ -18,7 +18,7 @@ int main()
         std::cin>>d;
         it = direct.find(d);
         if (it != direct.end()){
-            H.move(it->second);
+            H.skill->DoIt(it->second);
         }
 
     }
