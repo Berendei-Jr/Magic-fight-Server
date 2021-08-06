@@ -5,7 +5,7 @@
 #include "klibriry.h"
 int main()
 {
-    const int radius = 3;
+    const int radius = 5;
     board B(radius);
     char d;
     std::map <char, int> direct = {{'a', 0}, {'w', 1}, {'e', 2}, {'d', 3}, {'x', 4}, {'z', 5}, {'s', 6}};

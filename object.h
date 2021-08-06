@@ -18,7 +18,8 @@ class object
 
 };
 
-class hero:public object {
+class hero:public object
+{
     public:
         hero(hexagon* position);
         int health;
@@ -27,5 +28,14 @@ class hero:public object {
         ~hero();
     private:
 
+};
+
+class projectile: public object
+{
+    public:
+        projectile(hexagon* position, int damage, int SpeedTime, int Creator);
+        int damage;
+        int SpeedTime;
+        int Creator;
 };
 #endif // OBJECT_H
