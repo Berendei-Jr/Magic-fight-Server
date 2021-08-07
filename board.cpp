@@ -1,11 +1,24 @@
 #include "board.h"
 #include <iostream>
 #include <list>
-hexagon::hexagon(){
+hexagon::hexagon(board* owner){
     this->lock_status=0;
     this->hex_objects={};
     this->direction= new hexagon*[7];
     this->direction[6]=this;
+    this->owner=owner;
+}
+
+void hexagon::AddObject(object* new_object)
+{
+    this->hex_objects.push_back(new_object);
+    this->owner->all_objects.push_back(new_object);
+}
+
+void hexagon::DelObject(object* del_object)
+{
+    this->hex_objects.remove(del_object);
+    this->owner->all_objects.remove(del_object);
 }
 
 void hexagon::link(hexagon* link_hex, int direction){
@@ -18,11 +31,11 @@ hexagon* hexagon::NextHex(int direction)
 }
 board::board(int radius){
     this->radius=radius;
-    hexagon* new_hex = new hexagon();
+    hexagon* new_hex = new hexagon(this);
     this->center= new_hex;
     hexagon* current_hex=this->center;
     for(int i = 0; i<6; i++){
-        new_hex = new hexagon();
+        new_hex = new hexagon(this);
         this->center->link(new_hex, (0+i)%6);
     }
     for(int i=0; i<6; i++){
@@ -31,11 +44,11 @@ board::board(int radius){
     for(int i=2; i<radius; i++){
         current_hex=current_hex->direction[0];
         for(int j = 0; j<6; j++){
-            new_hex=new hexagon();
+            new_hex=new hexagon(this);
             current_hex->link(new_hex, (0+j)%6);
             for(int k=0; k<i-1; k++){
                 current_hex=current_hex->direction[(2+j)%6];
-                new_hex=new hexagon();
+                new_hex=new hexagon(this);
                 current_hex->link(new_hex, (0+j)%6);
                 current_hex->direction[(5+j)%6]->link(new_hex, (1+j)%6);
                 current_hex->direction[(5+j)%6]->direction[(0+j)%6]->link(new_hex, (2+j)%6);
