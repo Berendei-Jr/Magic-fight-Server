@@ -23,10 +23,11 @@ class hero:public object
 {
 
 public:
-    hero(hexagon* position, ActionsList SkillName);
+    hero(hexagon* position, ActionsList SkillName, int number);
     int health;
     action* skill;
-    //void move(int direction);
+    int numder;
+
     void destroy();
     ~hero();
 private:

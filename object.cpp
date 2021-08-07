@@ -4,13 +4,15 @@
 object::object(hexagon* position)
 {
     this->position=position;
-    position->hex_objects.push_back(this);
+    position->AddObject(this);
 }
 
-hero::hero(hexagon* position, ActionsList SkillName):object(position)
+hero::hero(hexagon* position, ActionsList SkillName, int number):object(position)
 {
+    this->type="hero";
     this->icon='0';
     this->health=100;
+    this->numder;
     switch (SkillName)
     {
     case Step:
@@ -22,6 +24,6 @@ hero::hero(hexagon* position, ActionsList SkillName):object(position)
 hero::~hero(){}
 
 void hero::destroy(){
-    this->position->hex_objects.remove(this);
+    this->position->DelObject(this);
     this->~hero();
 }

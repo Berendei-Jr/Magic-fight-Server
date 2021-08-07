@@ -2,16 +2,24 @@
 #define BOARD_H
 #include "object.h"
 #include <list>
+class board;
+
 class hexagon
 {
     public:
-        hexagon();
+        hexagon(board* owner);
+        board* owner;
         hexagon** direction;
         int lock_status;
         std::list <object*>  hex_objects;
 
-        void link(hexagon* link_hex, int direction);
+        void AddObject(object* new_object);
+        void DelObject(object* del_object);
         hexagon* NextHex(int direction);
+    private:
+        void link(hexagon* link_hex, int direction);
+    friend class board;
+
 
 };
 class board
@@ -20,8 +28,8 @@ class board
         board(int radius);
         int radius;
         hexagon* center;
+        std::list <object*>  all_objects;
 
-        hexagon GetHexagon(int x, int y);
         void print();
         hexagon* HexByCoordinates(int x, int y);
 };
