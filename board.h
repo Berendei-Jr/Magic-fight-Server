@@ -16,8 +16,12 @@ class hexagon
         void AddObject(object* new_object);
         void DelObject(object* del_object);
         hexagon* NextHex(int direction);
+        int* GetCoordinate();
     private:
+        int* coordinate;
+
         void link(hexagon* link_hex, int direction);
+        void ChangeCoordinate(int x, int y);
     friend class board;
 
 
