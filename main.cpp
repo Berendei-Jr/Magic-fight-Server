@@ -16,6 +16,7 @@ int main()
     board B(radius);
     char d;
     int* a;
+    int saved_hash = B.GetHash();
     std::map <char, int> direct = {{'a', 0}, {'w', 1}, {'e', 2}, {'d', 3}, {'x', 4}, {'z', 5}, {'s', 6}};
     std::map <char, int> :: iterator it;
     hero H(B.center, Step, 1);
@@ -32,8 +33,10 @@ int main()
     sf::Sprite hero(hero_texture);
 
     // Start the game loop
+    sf::Time duration = sf::milliseconds(16);
     while (window.isOpen())
     {
+        sf::sleep(duration);
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -53,18 +56,23 @@ int main()
             }
         }
         // Clear screen
-        window.clear();
-        a = H.position->GetCoordinate();
-        std::cout << a[0] << " " << a[1]<< std::endl;
-        CoordinatesAdapter(a);
-        hero.setPosition(a[0], a[1]);
-        delete[] a;
-        // Draw the sprite
-        window.draw(sprite);
-        window.draw(hero);
-        // Update the window
-        window.display();
-        //ks::stop();
+        if (saved_hash!=B.GetHash())
+        {
+            saved_hash=B.GetHash();
+            window.clear();
+            a = H.position->GetCoordinate();
+            std::cout << a[0] << " " << a[1]<< std::endl;
+            CoordinatesAdapter(a);
+            hero.setPosition(a[0], a[1]);
+            delete[] a;
+            // Draw the sprite
+            window.draw(sprite);
+            window.draw(hero);
+            // Update the window
+            window.display();
+            //ks::stop();
+        }
+
     }
     return EXIT_SUCCESS;
 }
