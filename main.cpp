@@ -23,24 +23,19 @@ int main()
     if (!hero_texture.loadFromFile("img/hero.png"))
         return EXIT_FAILURE;
     hero H(B.center, hero_texture, Step, 1);
-    // Create the main window
     sf::RenderWindow window(sf::VideoMode(486, 434), "Magic Fight");
-    // Load a sprite to display
     sf::Texture texture;
     if (!texture.loadFromFile("img/board.png"))
         return EXIT_FAILURE;
     sf::Sprite sprite(texture);
 
-    // Start the game loop
     sf::Time duration = sf::milliseconds(16);
     while (window.isOpen())
     {
         sf::sleep(duration);
-        // Process events
         sf::Event event;
         while (window.pollEvent(event))
         {
-            // Close window: exit
             if (event.type == sf::Event::Closed)
             {
                 window.close();
@@ -54,7 +49,6 @@ int main()
                 }
             }
         }
-        // Clear screen
         if (saved_hash!=B.GetHash())
         {
             saved_hash=B.GetHash();
@@ -64,12 +58,9 @@ int main()
             CoordinatesAdapter(a);
             H.sprite.setPosition(a[0], a[1]);
             delete[] a;
-            // Draw the sprite
             window.draw(sprite);
             window.draw(H.sprite);
-            // Update the window
             window.display();
-            //ks::stop();
         }
 
     }

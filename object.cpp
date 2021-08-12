@@ -1,6 +1,5 @@
 #include "object.h"
 #include "board.h"
-//#include "actions.h"
 object::object(hexagon* position, sf::Texture &textr)
 {
     this->position=position;
