@@ -1,12 +1,25 @@
 #include "board.h"
 #include <iostream>
 #include <list>
-hexagon::hexagon(board* owner){
+hexagon::hexagon(board* owner)
+{
+    this->coordinate=new int[2];
     this->lock_status=0;
     this->hex_objects={};
     this->direction= new hexagon*[7];
     this->direction[6]=this;
     this->owner=owner;
+}
+
+int* hexagon::GetCoordinate(){
+    int* a =new int[2]{this->coordinate[0], this->coordinate[1]};
+    return a;
+}
+
+void hexagon::ChangeCoordinate(int x, int y)
+{
+    this->coordinate[0]=x;
+    this->coordinate[1]=y;
 }
 
 void hexagon::AddObject(object* new_object)
@@ -29,7 +42,8 @@ hexagon* hexagon::NextHex(int direction)
 {
     return this->direction[direction];
 }
-board::board(int radius){
+board::board(int radius)
+{
     this->radius=radius;
     hexagon* new_hex = new hexagon(this);
     this->center= new_hex;
@@ -59,6 +73,24 @@ board::board(int radius){
             for(int k=0; k<i-1; k++){
                 current_hex=current_hex->direction[(2+j)%6];
             }
+        }
+    }
+    for(int i=0; i<this->radius; i++)
+    {
+        current_hex=this->HexByCoordinates(-i, this->radius-i-1);
+        for(int j=0; j<this->radius+i; j++)
+        {
+            current_hex->ChangeCoordinate(-i+j, this->radius-i-1);
+            current_hex= current_hex->NextHex(3);
+        }
+    }
+    for(int i=1; i<this->radius; i++)
+    {
+        current_hex=this->HexByCoordinates(-this->radius+1, -i);
+        for(int j=0; j<radius*2-1-i; j++)
+        {
+            current_hex->ChangeCoordinate(-this->radius+1+j, -i);
+            current_hex= current_hex->NextHex(3);
         }
     }
 }
