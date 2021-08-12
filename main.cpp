@@ -5,10 +5,10 @@
 #include "klibriry.h"
 #include <SFML/Graphics.hpp>
 void CoordinatesAdapter (int* a){
-    const int zx=30;
-    const int zy=52;
-    a[0]=(a[0]+a[0]-a[1])*zx+217;
-    a[1]=198-a[1]*zy;
+    const int zx=27;
+    const int zy=47;
+    a[0]=(a[0]+a[0]-a[1])*zx+232;
+    a[1]=207-a[1]*zy;
 }
 int main()
 {
@@ -20,7 +20,7 @@ int main()
     std::map <char, int> :: iterator it;
     hero H(B.center, Step, 1);
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(452, 411), "Magic Fight");
+    sf::RenderWindow window(sf::VideoMode(486, 434), "Magic Fight");
     // Load a sprite to display
     sf::Texture texture;
     if (!texture.loadFromFile("img/board.png"))
@@ -46,10 +46,6 @@ int main()
             if (event.type == sf::Event::KeyPressed)
             {
                 d = event.key.code + 97;
-                //ks::clear();
-                //B.print();
-                //std::cout<<std::endl;
-                //std::cin>>d;
                 it = direct.find(d);
                 if (it != direct.end()){
                     H.skill->DoIt(it->second);
@@ -68,6 +64,7 @@ int main()
         window.draw(hero);
         // Update the window
         window.display();
+        //ks::stop();
     }
     return EXIT_SUCCESS;
 }
