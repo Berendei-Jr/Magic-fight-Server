@@ -44,6 +44,7 @@ hexagon* hexagon::NextHex(int direction)
 }
 board::board(int radius)
 {
+    this->hash=0;
     this->radius=radius;
     hexagon* new_hex = new hexagon(this);
     this->center= new_hex;
@@ -170,4 +171,14 @@ hexagon* board::HexByCoordinates(int x, int y)
         current_hex=current_hex->NextHex(4);
     }
     return current_hex;
+}
+
+int board::GetHash()
+{
+    return this->hash;
+}
+
+void board::ChangrHash()
+{
+    this->hash++;
 }
