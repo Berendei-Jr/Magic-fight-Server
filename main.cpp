@@ -16,10 +16,13 @@ int main()
     board B(radius);
     char d;
     int* a;
-    int saved_hash = B.GetHash();
+    int saved_hash = -1;
     std::map <char, int> direct = {{'a', 0}, {'w', 1}, {'e', 2}, {'d', 3}, {'x', 4}, {'z', 5}, {'s', 6}};
     std::map <char, int> :: iterator it;
-    hero H(B.center, Step, 1);
+    sf::Texture hero_texture;
+    if (!hero_texture.loadFromFile("img/hero.png"))
+        return EXIT_FAILURE;
+    hero H(B.center, hero_texture, Step, 1);
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(486, 434), "Magic Fight");
     // Load a sprite to display
@@ -27,10 +30,6 @@ int main()
     if (!texture.loadFromFile("img/board.png"))
         return EXIT_FAILURE;
     sf::Sprite sprite(texture);
-     sf::Texture hero_texture;
-    if (!hero_texture.loadFromFile("img/hero.png"))
-        return EXIT_FAILURE;
-    sf::Sprite hero(hero_texture);
 
     // Start the game loop
     sf::Time duration = sf::milliseconds(16);
@@ -63,11 +62,11 @@ int main()
             a = H.position->GetCoordinate();
             std::cout << a[0] << " " << a[1]<< std::endl;
             CoordinatesAdapter(a);
-            hero.setPosition(a[0], a[1]);
+            H.sprite.setPosition(a[0], a[1]);
             delete[] a;
             // Draw the sprite
             window.draw(sprite);
-            window.draw(hero);
+            window.draw(H.sprite);
             // Update the window
             window.display();
             //ks::stop();

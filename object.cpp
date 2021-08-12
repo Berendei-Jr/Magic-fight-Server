@@ -1,13 +1,14 @@
 #include "object.h"
 #include "board.h"
 //#include "actions.h"
-object::object(hexagon* position)
+object::object(hexagon* position, sf::Texture &textr)
 {
     this->position=position;
     position->AddObject(this);
+    this->sprite = sf::Sprite(textr);
 }
 
-hero::hero(hexagon* position, ActionsList SkillName, int number):object(position)
+hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillName, int number):object(position, textr)
 {
     this->type="hero";
     this->icon='0';
