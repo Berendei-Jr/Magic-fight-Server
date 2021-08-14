@@ -46,6 +46,7 @@ board::board(int radius)
 {
     this->hash=0;
     this->radius=radius;
+    this->event_queue=EventQueue();
     hexagon* new_hex = new hexagon(this);
     this->center= new_hex;
     hexagon* current_hex=this->center;
@@ -96,61 +97,6 @@ board::board(int radius)
     }
 }
 
-void board::print()
-{
-    int k;
-    hexagon* current_hex;
-    for(int i=0; i<this->radius; i++)
-    {
-        char* A = new char[this->radius*4-3];
-        current_hex=this->HexByCoordinates(-i, this->radius-i-1);
-        k=this->radius-1-i;
-        for(int j=0; j<radius+i; j++)
-        {
-            if (current_hex->hex_objects.size()==0)
-            {
-                A[k]='+';
-            } else
-            {
-                A[k]='0';
-            }
-            k+=2;
-            current_hex= current_hex->NextHex(3);
-        }
-        for(int j=0; j<this->radius*4-3; j++){
-            if(A[j]==0){
-                std::cout<<' ';
-            }
-            std::cout<<A[j];
-        }
-        std::cout<<std::endl;
-    }
-    for(int i=1; i<this->radius; i++)
-    {
-        char* A = new char[this->radius*4-3];
-        current_hex=this->HexByCoordinates(-this->radius+1, -i);
-        k=i;
-        for(int j=0; j<radius*2-1-i; j++)
-        {
-            if (current_hex->hex_objects.size()==0)
-            {
-                A[k]='+';
-            } else
-            {
-                A[k]=current_hex->hex_objects.front()->icon;
-            }
-            k+=2;
-            current_hex= current_hex->NextHex(3);
-        }
-        for(int j=0; j<this->radius*4-3; j++){
-            if(A[j]==0){
-                std::cout<<' ';
-            }
-            std::cout<<A[j];
-        }
-        std::cout<<std::endl;
-    }
-}
 hexagon* board::HexByCoordinates(int x, int y)
 {
     hexagon* current_hex=this->center;

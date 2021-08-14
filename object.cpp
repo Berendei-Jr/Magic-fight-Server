@@ -12,7 +12,7 @@ hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillName, int num
     this->type="hero";
     this->icon='0';
     this->health=100;
-    this->numder;
+    this->number=number;
     switch (SkillName)
     {
     case Step:

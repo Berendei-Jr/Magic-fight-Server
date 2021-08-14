@@ -7,7 +7,7 @@ class hexagon;
 class object
 {
 public:
-    char* type;
+    std::string type;
     char icon;
     hexagon* position;
     sf::Sprite sprite;
@@ -28,7 +28,7 @@ public:
     hero(hexagon* position, sf::Texture &textr, ActionsList SkillName, int number);
     int health;
     action* skill;
-    int numder;
+    int number;
 
     void destroy();
     ~hero();
