@@ -1,18 +1,18 @@
 #include "object.h"
 #include "board.h"
-object::object(hexagon* position, sf::Texture &textr)
+//#include "actions.h"
+object::object(hexagon* position)
 {
     this->position=position;
     position->AddObject(this);
-    this->sprite = sf::Sprite(textr);
 }
 
-hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillName, int number):object(position, textr)
+hero::hero(hexagon* position, ActionsList SkillName, int number):object(position)
 {
     this->type="hero";
     this->icon='0';
     this->health=100;
-    this->number=number;
+    this->numder;
     switch (SkillName)
     {
     case Step:

@@ -1,18 +1,16 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 #include "actions.h"
-#include <SFML/Graphics.hpp>
 class hexagon;
 
 class object
 {
 public:
-    std::string type;
+    char* type;
     char icon;
     hexagon* position;
-    sf::Sprite sprite;
 
-    object(hexagon* position, sf::Texture &textr);
+    object(hexagon* position);
     virtual void destroy()=0;
 
 protected:
@@ -25,10 +23,10 @@ class hero:public object
 {
 
 public:
-    hero(hexagon* position, sf::Texture &textr, ActionsList SkillName, int number);
+    hero(hexagon* position, ActionsList SkillName, int number);
     int health;
     action* skill;
-    int number;
+    int numder;
 
     void destroy();
     ~hero();
@@ -39,7 +37,7 @@ private:
 class projectile: public object
 {
 public:
-    projectile(hexagon* position, sf::Texture &textr, int damage, int SpeedTime, int Creator);
+    projectile(hexagon* position, int damage, int SpeedTime, int Creator);
     int damage;
     int SpeedTime;
     int Creator;
@@ -53,14 +51,14 @@ public:
 class effect
 {
 public:
-    effect(hexagon* position, std::string texture_file);
+    effect(hexagon* position);;
     ~effect();
 };
 
 class spell: public object
 {
 public:
-    spell(hexagon* position, std::string texture_file);
+    spell(hexagon* position);
     effect* effects;
     void destroy();
     ~spell();
