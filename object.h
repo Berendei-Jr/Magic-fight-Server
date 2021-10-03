@@ -2,6 +2,7 @@
 #define OBJECT_H
 #include "actions.h"
 #include <SFML/Graphics.hpp>
+
 class hexagon;
 
 class object
@@ -14,7 +15,7 @@ public:
 
     object(hexagon* position, sf::Texture &textr);
     virtual void destroy()=0;
-    virtual ~object()=0;
+    virtual ~object();
 
 protected:
 
@@ -48,6 +49,7 @@ public:
 
     void TickAction();
     void destroy();
+    ~projectile();
 
 };
 

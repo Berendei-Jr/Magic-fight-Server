@@ -27,12 +27,18 @@ hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int
     }
 
 }
-projectile::projectile(std::string name, hexagon* position, sf::Texture &textr, int damage, int SpeedTime, int Creator):object(position, textr){
+
+projectile::projectile(std::string name, hexagon* position, sf::Texture &textr, int damage, int SpeedTime, int Creator):object(position, textr)
+{
     this->name=name;
     this->damage=damage;
     this->SpeedTime=SpeedTime;
     this->Creator=Creator;
 }
+
+void projectile::destroy(){}
+projectile::~projectile(){}
+
 
 hero::~hero(){}
 
