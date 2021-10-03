@@ -22,7 +22,9 @@ int main()
     sf::Texture hero_texture;
     if (!hero_texture.loadFromFile("img/hero.png"))
         return EXIT_FAILURE;
-    hero H(B.center, hero_texture, Step, 1);
+    ActionsList hero_actions[4];
+    hero_actions[0]=Step;
+    hero H(B.center, hero_texture, hero_actions, 1);
     sf::RenderWindow window(sf::VideoMode(486, 434), "Magic Fight");
     sf::Texture texture;
     if (!texture.loadFromFile("img/board.png"))
@@ -45,7 +47,7 @@ int main()
                 d = event.key.code + 97;
                 it = direct.find(d);
                 if (it != direct.end()){
-                    H.skill->DoIt(it->second);
+                    H.skills[0]->DoIt(it->second);
                 }
             }
         }

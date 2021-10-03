@@ -17,3 +17,12 @@ void step::DoIt(int direction)
         this->owner->position->hex_objects.push_back(owner);
     }
 }
+
+fireball::fireball(hero* owner):action(owner){}
+
+void fireball::DoIt(int direction)
+{
+    sf::Texture fireball_texture;
+    fireball_texture.loadFromFile("img/fireball.png");
+    new projectile("Fireball", this->owner->position, fireball_texture, 10, 100, this->owner->number);
+}
