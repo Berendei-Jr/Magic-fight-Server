@@ -2,6 +2,7 @@
 #define BOARD_H
 #include "object.h"
 #include <list>
+#include "EventQueue.h"
 class board;
 
 class hexagon
@@ -33,8 +34,13 @@ class board
         int radius;
         hexagon* center;
         std::list <object*>  all_objects;
+        EventQueue event_queue;
 
         void print();
         hexagon* HexByCoordinates(int x, int y);
+        void ChangrHash();
+        int GetHash();
+    private:
+        int hash;
 };
 #endif // BOARD_H
