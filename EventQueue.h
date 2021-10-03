@@ -1,6 +1,7 @@
 #ifndef EVENTQUEUE_H
 #define EVENTQUEUE_H
 #include <queue>
+#include <ctime>
 
 class Event
 {
@@ -21,7 +22,7 @@ class EventQueue
         EventQueue();
         ~EventQueue();
 
-        int AddEvent(Event event);
+        void push(Event event);
         //void DelEvent(int id);
         void tick();
 
@@ -29,7 +30,7 @@ class EventQueue
     protected:
 
     private:
-        std::queue <Event> queue;
+        std::queue <Event> qu;
 };
 
 #endif // EVENTQUEUE_H
