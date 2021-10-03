@@ -1,6 +1,6 @@
 #ifndef EVENTQUEUE_H
 #define EVENTQUEUE_H
-#include <list>
+#include <queue>
 
 class Event
 {
@@ -29,7 +29,7 @@ class EventQueue
     protected:
 
     private:
-        std::list <Event> queue;
+        std::queue <Event> queue;
 };
 
 #endif // EVENTQUEUE_H
