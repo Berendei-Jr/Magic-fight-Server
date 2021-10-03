@@ -2,7 +2,8 @@
 #define ACTIONS_H
 
 enum ActionsList {
-    Step
+    Step,
+    Fireball
 };
 class hero;
 
@@ -19,6 +20,13 @@ class step: public action
 {
 public:
     step(hero* owner);
+    void DoIt(int direction);
+};
+
+class fireball: public action
+{
+public:
+    fireball(hero* owner);
     void DoIt(int direction);
 };
 #endif // ACTIONS_H

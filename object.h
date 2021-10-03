@@ -14,6 +14,7 @@ public:
 
     object(hexagon* position, sf::Texture &textr);
     virtual void destroy()=0;
+    virtual ~object()=0;
 
 protected:
 
@@ -25,9 +26,9 @@ class hero:public object
 {
 
 public:
-    hero(hexagon* position, sf::Texture &textr, ActionsList SkillName, int number);
+    hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int number);
     int health;
-    action* skill;
+    action* skills[4];
     int number;
 
     void destroy();
@@ -39,14 +40,14 @@ private:
 class projectile: public object
 {
 public:
-    projectile(hexagon* position, sf::Texture &textr, int damage, int SpeedTime, int Creator);
+    projectile(std::string name, hexagon* position, sf::Texture &textr, int damage, int SpeedTime, int Creator);
+    std::string name;
     int damage;
     int SpeedTime;
     int Creator;
 
     void TickAction();
     void destroy();
-    ~projectile();
 
 };
 
