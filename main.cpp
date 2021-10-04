@@ -14,22 +14,28 @@ int main()
 {
     const int radius = 5;
     board B(radius);
-    char d;
+    char d, act_key;
     int* a;
+    bool b;
     int saved_hash = -1;
     std::map <char, int> direct = {{'a', 0}, {'w', 1}, {'e', 2}, {'d', 3}, {'x', 4}, {'z', 5}, {'s', 6}};
-    std::map <char, int> :: iterator it;
+    std::map <char, int> action_map = {{'k', 0}, {'o', 1}, {'l', 2}, {'p', 3}};
+    std::map <char, int> :: iterator it1, it2;
+    ActionsList hero_actions[4];
+    hero_actions[0]=Step;
+    hero_actions[1]=Fireball;
+    hero_actions[2]=Step;
+    hero_actions[3]=Step;
     sf::Texture hero_texture;
     if (!hero_texture.loadFromFile("img/hero.png"))
         return EXIT_FAILURE;
-    ActionsList hero_actions[4];
-    hero_actions[0]=Step;
     hero H(B.center, hero_texture, hero_actions, 1);
+    hero H2(B.center, hero_texture, hero_actions, 2);
     sf::RenderWindow window(sf::VideoMode(486, 434), "Magic Fight");
-    sf::Texture texture;
-    if (!texture.loadFromFile("img/board.png"))
+    sf::Texture board_textr;
+    if (!board_textr.loadFromFile("img/board.png"))
         return EXIT_FAILURE;
-    sf::Sprite sprite(texture);
+    sf::Sprite board(board_textr);
 
     sf::Time duration = sf::milliseconds(16);
     while (window.isOpen())
@@ -45,23 +51,36 @@ int main()
             if (event.type == sf::Event::KeyPressed)
             {
                 d = event.key.code + 97;
-                it = direct.find(d);
-                if (it != direct.end()){
-                    H.skills[0]->DoIt(it->second);
+                if (b){
+                    it1 = direct.find(d);
+                    if (it1 != direct.end()){
+                        H.skills[it2->second]->DoIt(it1->second);
+                    }
+                    b=false;
+                } else {
+                    act_key=d;
+                    it2 = action_map.find(act_key);
+                    b=it2 !=action_map.end();
                 }
+
             }
         }
         if (saved_hash!=B.GetHash())
         {
             saved_hash=B.GetHash();
             window.clear();
-            a = H.position->GetCoordinate();
-            std::cout << a[0] << " " << a[1]<< std::endl;
-            CoordinatesAdapter(a);
-            H.sprite.setPosition(a[0], a[1]);
+
             delete[] a;
-            window.draw(sprite);
-            window.draw(H.sprite);
+            window.draw(board);
+            for(auto it=B.all_objects.begin(); it!=B.all_objects.end(); it++){
+                object* temporary = *it;
+                a = temporary->position->GetCoordinate();
+                std::cout << a[0] << " " << a[1]<< std::endl;
+                CoordinatesAdapter(a);
+                temporary->sprite.setPosition(a[0], a[1]);
+                window.draw(temporary->sprite);
+            }
+            //window.draw(H.sprite);
             window.display();
         }
 
