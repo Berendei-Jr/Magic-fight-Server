@@ -38,7 +38,7 @@ class board
 
         void print();
         hexagon* HexByCoordinates(int x, int y);
-        void ChangrHash();
+        void ChangeHash();
         int GetHash();
     private:
         int hash;
