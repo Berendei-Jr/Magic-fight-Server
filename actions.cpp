@@ -22,7 +22,7 @@ fireball::fireball(hero* owner):action(owner){}
 
 void fireball::DoIt(int direction)
 {
-    sf::Texture fireball_texture;
-    fireball_texture.loadFromFile("img/fireball.png");
-    new projectile("Fireball", this->owner->position, fireball_texture, 10, 100, this->owner->number);
+    sf::Texture *fireball_texture = new sf::Texture;
+    fireball_texture->loadFromFile("img/fireball.png");
+    new projectile("Fireball", this->owner->position, *fireball_texture, 10, 100, this->owner->number);
 }
