@@ -124,7 +124,7 @@ int board::GetHash()
     return this->hash;
 }
 
-void board::ChangrHash()
+void board::ChangeHash()
 {
     this->hash++;
 }

@@ -30,7 +30,7 @@ int main()
     if (!hero_texture.loadFromFile("img/hero.png"))
         return EXIT_FAILURE;
     hero H(B.center, hero_texture, hero_actions, 1);
-    hero H2(B.center, hero_texture, hero_actions, 2);
+    //hero H2(B.center, hero_texture, hero_actions, 2);
     sf::RenderWindow window(sf::VideoMode(486, 434), "Magic Fight");
     sf::Texture board_textr;
     if (!board_textr.loadFromFile("img/board.png"))
@@ -69,8 +69,6 @@ int main()
         {
             saved_hash=B.GetHash();
             window.clear();
-
-            delete[] a;
             window.draw(board);
             for(auto it=B.all_objects.begin(); it!=B.all_objects.end(); it++){
                 object* temporary = *it;
@@ -79,6 +77,7 @@ int main()
                 CoordinatesAdapter(a);
                 temporary->sprite.setPosition(a[0], a[1]);
                 window.draw(temporary->sprite);
+                delete[] a;
             }
             //window.draw(H.sprite);
             window.display();
