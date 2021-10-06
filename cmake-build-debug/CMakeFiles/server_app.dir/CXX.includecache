@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Server.hpp
+sys/socket.h
+-
+sys/types.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+unistd.h
+-
+iostream
+-
+vector
+-
+thread
+-
+cstring
+-
+
+/home/hellcat/Desktop/repos/Magic_fight/sources/Server.cpp
+Server.hpp
+/home/hellcat/Desktop/repos/Magic_fight/sources/Server.hpp
+
