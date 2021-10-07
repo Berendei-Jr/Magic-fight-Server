@@ -1,38 +1,35 @@
 #include "object.h"
 #include "board.h"
-object::object(hexagon* position, sf::Texture &textr)
+object::object(hexagon* position)
 {
     this->position=position;
     position->AddObject(this);
-    this->sprite = sf::Sprite(textr);
 }
 object::~object(){}
 
-hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int number):object(position, textr)
+hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int number):object(position)
 {
     this->type="hero";
     this->icon='0';
     this->health=100;
     this->number=number;
+    this->sprite= sf::Sprite(textr);
     for(int i = 0; i<4; i++){
         switch (SkillNames[i])
         {
         case Step:
-            this->skills[i]=new step(this);
+            this->skills[i]=new make_step(this);
             break;
         case Fireball:
-            this->skills[i]=new fireball(this);
+            this->skills[i]=new make_fireball(this);
             break;
         }
     }
 
 }
 
-projectile::projectile(std::string name, hexagon* position, sf::Texture &textr, int damage, int SpeedTime, int Creator):object(position, textr)
-{
-    this->name=name;
-    this->damage=damage;
-    this->SpeedTime=SpeedTime;
+projectile::projectile(hexagon* position, int Creator):object(position){
+    this->position=position;
     this->Creator=Creator;
 }
 

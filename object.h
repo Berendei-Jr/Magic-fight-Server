@@ -13,7 +13,7 @@ public:
     hexagon* position;
     sf::Sprite sprite;
 
-    object(hexagon* position, sf::Texture &textr);
+    object(hexagon* position);
     virtual void destroy()=0;
     virtual ~object();
 
@@ -41,15 +41,15 @@ private:
 class projectile: public object
 {
 public:
-    projectile(std::string name, hexagon* position, sf::Texture &textr, int damage, int SpeedTime, int Creator);
+    projectile(hexagon* position, int Creator);
     std::string name;
     int damage;
     int SpeedTime;
     int Creator;
 
-    void TickAction();
-    void destroy();
-    ~projectile();
+    virtual void TickAction()=0;
+    virtual void destroy()=0;
+    virtual ~projectile();
 
 };
 

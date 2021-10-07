@@ -1,6 +1,10 @@
 #include "EventQueue.h"
+Event::Event(projectile* prod){
+    this->prod = prod;
+}
+
 void Event::DoIt(){
-    this->func();
+    this->prod->TickAction();
 }
 EventQueue::EventQueue()
 {
