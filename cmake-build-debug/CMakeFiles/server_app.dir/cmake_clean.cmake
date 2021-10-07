@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/server_app.dir/sources/Server.cpp.o"
+  "CMakeFiles/server_app.dir/sources/NetModule.cpp.o"
   "libserver_app.a"
   "libserver_app.pdb"
 )

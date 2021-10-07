@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../include/Server.hpp
+../include/NetModule.hpp
 sys/socket.h
 -
 sys/types.h
@@ -21,12 +21,22 @@ iostream
 -
 vector
 -
+queue
+-
 thread
+-
+mutex
 -
 cstring
 -
+memory
+-
 
 /home/hellcat/Desktop/repos/Magic_fight/main/main.cpp
-Server.hpp
-/home/hellcat/Desktop/repos/Magic_fight/main/Server.hpp
+NetModule.hpp
+/home/hellcat/Desktop/repos/Magic_fight/main/NetModule.hpp
+iostream
+-
+thread
+-
 

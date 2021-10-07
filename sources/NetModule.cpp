@@ -1,13 +1,72 @@
 // Copyright 2021 Vedeneev Andrey <vedvedved2003@gmail.com>
 
-#include "Server.hpp"
+#include "NetModule.hpp"
+
 std::string S_TAG = "[SERVER] ";
 
 std::string SERV_STR_0 = S_TAG + "The system has assigned you ID: ";
 std::string SERV_STR_1 = "\n" + S_TAG + "Enter your partner's ID. If you want to create a room enter '0': ";
 std::string SERV_STR_2 = S_TAG + "Waiting for your partner...\n";
 
+std::mutex mtx, mtx1;
+size_t THREAD_COUNT = std::thread::hardware_concurrency();
+bool is_on = true;
+
 using std::cout; using std::endl; using std::cerr;
+
+struct Client {
+    int id;
+    int client_socket;
+};
+
+struct Room {
+    bool is_full;
+    int ID1;
+    int ID2;
+};
+
+struct Node {
+    int _sock;
+    std::unique_ptr<Node> _next;
+    explicit Node(int sock): _sock(sock), _next(nullptr) {}
+    void ToNull() {
+        _next.release();
+    }
+    Node* Next() {
+        return _next.get();
+    }
+    void SetNext(Node* ptr) {
+        _next.reset(ptr);
+    }
+};
+
+    MyQueue::MyQueue(): _first(nullptr), _size(0) {}
+    Node* MyQueue::get() {
+        std::lock_guard<std::mutex> lg(mtx);
+        if (_size) {
+            auto* tmp = _first->Next();
+            _first->ToNull();
+            auto* obj = _first.release();
+            _first.reset(tmp);
+            _size--;
+            return obj;
+        }
+        return nullptr;
+    }
+    void MyQueue::add(Node* node) {
+        std::lock_guard<std::mutex> lg(mtx1);
+        if (_size == 0){
+            _first.reset(node);
+            _size++;
+            return;
+        }
+        auto* tmp = _first.get();
+        for (size_t i = 0; i < _size - 1; ++i) {
+            tmp = tmp->Next();
+        }
+        tmp->SetNext(node);
+        _size++;
+    }
 
 int Socket(int domain, int type, int protocol){
     int res = socket(domain, type, protocol);
@@ -59,7 +118,7 @@ std::string Read(int client_sock) {
     return tmp;
 }
 
-void Server::disconnect(int id) {
+void NetModule::disconnect(int id) {
     for (auto it: _clients) { // закрытие сокета по указанному id
         if(it.id == id){
             close(it.client_socket);
@@ -80,18 +139,36 @@ void Server::disconnect(int id) {
     }
 }
 
-Server::Server() {}
-
-void Server::init(int port) {
+NetModule::NetModule(int port) {
     _sock = Socket(AF_INET, SOCK_STREAM, 0);
     _serv = {0, 0, {0}, {0, 0, 0, 0}};
     _serv.sin_family = AF_INET;
     _serv.sin_port = htons(port);
     _port = port;
     Bind(_sock, reinterpret_cast<const sockaddr *>(&_serv), sizeof _serv);
+
+
+    //Создание пула потоков
+    if (THREAD_COUNT == 0) THREAD_COUNT = 1;
+    for (size_t i = 0; i < THREAD_COUNT; ++i) {
+        _thr_pool.emplace_back(&NetModule::thread_function, this); //TO_DO
+    }
+
+    cout << S_TAG << " Port: " << _port << "; Waiting for connections...\n";
+    std::thread main(&NetModule::run, this);
+    main.detach();
 }
 
-void Server::act(int client_sock){
+void NetModule::run() {
+    while (is_on) {
+        Listen(_sock, BACKLOG);
+        socklen_t adrlen = sizeof _serv;
+        int c0 = Accept(_sock, reinterpret_cast<sockaddr *>(&_serv), &adrlen); //новый сокет для клиента
+        _my_queue.add(new Node(c0));
+    }
+}
+
+void NetModule::chat(int client_sock){
     srand(client_sock);
     int ID = rand() % 900 + 100; //Генерирование случайного id для клиента
 
@@ -125,23 +202,20 @@ void Server::act(int client_sock){
     }
 }
 
-void Server::run() {
-    cout << S_TAG << " Port: " << _port << "; Waiting for connections...\n";
-    for (int i = 0; i < BACKLOG; ++i) {
-        Listen(_sock, BACKLOG);
-        socklen_t adrlen = sizeof _serv;
-        int c0;
-        c0 = Accept(_sock, reinterpret_cast<sockaddr *>(&_serv), &adrlen); //новый сокет для клиента
-        _thr.emplace_back(&Server::act, this, c0);
-        _thr.back().detach();
-    }
-}
-
-void Server::end() {
+void NetModule::end() {
     for (auto it: _clients) {
         close(it.client_socket);
     }
     close(_sock);
 }
 
-Server::~Server() = default;
+void NetModule::thread_function() {
+    while (is_on) {
+    std::unique_ptr<Node> node(_my_queue.get());
+        if (node) {
+            chat(node->_sock);
+        }
+    }
+}
+
+NetModule::~NetModule() = default;

@@ -66,27 +66,27 @@ include CMakeFiles/server_app.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/server_app.dir/flags.make
 
-CMakeFiles/server_app.dir/sources/Server.cpp.o: CMakeFiles/server_app.dir/flags.make
-CMakeFiles/server_app.dir/sources/Server.cpp.o: ../sources/Server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/server_app.dir/sources/Server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/server_app.dir/sources/Server.cpp.o -c /home/hellcat/Desktop/repos/Magic_fight/sources/Server.cpp
+CMakeFiles/server_app.dir/sources/NetModule.cpp.o: CMakeFiles/server_app.dir/flags.make
+CMakeFiles/server_app.dir/sources/NetModule.cpp.o: ../sources/NetModule.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/server_app.dir/sources/NetModule.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/server_app.dir/sources/NetModule.cpp.o -c /home/hellcat/Desktop/repos/Magic_fight/sources/NetModule.cpp
 
-CMakeFiles/server_app.dir/sources/Server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server_app.dir/sources/Server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hellcat/Desktop/repos/Magic_fight/sources/Server.cpp > CMakeFiles/server_app.dir/sources/Server.cpp.i
+CMakeFiles/server_app.dir/sources/NetModule.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server_app.dir/sources/NetModule.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hellcat/Desktop/repos/Magic_fight/sources/NetModule.cpp > CMakeFiles/server_app.dir/sources/NetModule.cpp.i
 
-CMakeFiles/server_app.dir/sources/Server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server_app.dir/sources/Server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hellcat/Desktop/repos/Magic_fight/sources/Server.cpp -o CMakeFiles/server_app.dir/sources/Server.cpp.s
+CMakeFiles/server_app.dir/sources/NetModule.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server_app.dir/sources/NetModule.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hellcat/Desktop/repos/Magic_fight/sources/NetModule.cpp -o CMakeFiles/server_app.dir/sources/NetModule.cpp.s
 
 # Object files for target server_app
 server_app_OBJECTS = \
-"CMakeFiles/server_app.dir/sources/Server.cpp.o"
+"CMakeFiles/server_app.dir/sources/NetModule.cpp.o"
 
 # External object files for target server_app
 server_app_EXTERNAL_OBJECTS =
 
-libserver_app.a: CMakeFiles/server_app.dir/sources/Server.cpp.o
+libserver_app.a: CMakeFiles/server_app.dir/sources/NetModule.cpp.o
 libserver_app.a: CMakeFiles/server_app.dir/build.make
 libserver_app.a: CMakeFiles/server_app.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libserver_app.a"

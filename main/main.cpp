@@ -1,10 +1,13 @@
-#include "Server.hpp"
+#include "NetModule.hpp"
 
-int main(){
-    Server S;
-    S.init(7777);
-    S.run();
-    S.end();
-    return 0;
-};
+#include <iostream>
+#include <thread>
 
+int main() {
+    unsigned int n = std::thread::hardware_concurrency();
+    std::cout << n << " concurrent threads are supported.\n";
+    NetModule nm(6969);
+    std::this_thread::sleep_for(std::chrono::milliseconds(50000));
+    std::cout << "End!\n";
+    std::this_thread::sleep_for(std::chrono::milliseconds(100000));
+}

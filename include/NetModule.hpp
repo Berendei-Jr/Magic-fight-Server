@@ -1,7 +1,7 @@
 // Copyright 2021 Vedeneev Andrey <vedvedved2003@gmail.com>
 
-#ifndef INCLUDE_SERVER_HPP_
-#define INCLUDE_SERVER_HPP_
+#ifndef INCLUDE_NETMODULE_HPP_
+#define INCLUDE_NETMODULE_HPP_
 
 #define BACKLOG 10 //максимальное количество обслуживаемых клиентов
 
@@ -12,40 +12,44 @@
 #include <unistd.h>
 #include <iostream>
 #include <vector>
+#include <queue>
 #include <thread>
+#include <mutex>
 #include <cstring>
+#include <memory>
 
 int Socket(int domain, int type, int protocol);
 void Bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 void Listen(int sockfd, int backlog);
 int Accept(int sockfd, struct sockaddr * addr, socklen_t *addrlen);
 
-struct Client {
-    int id;
-    int client_socket;
+struct Client;
+struct Room;
+struct Node;
+struct MyQueue {
+    std::unique_ptr<Node> _first;
+    size_t _size;
+    MyQueue();
+    Node* get();
+    void add(Node* node);
 };
 
-struct Room {
-    bool is_full;
-    int ID1;
-    int ID2;
-};
-
-class Server {
-    int _sock{};
-    int _port{};
+class NetModule {
+    int _sock;
+    int _port;
     struct sockaddr_in _serv{};
     std::vector<Client> _clients;
     std::vector<Room> _rooms;
-    std::vector<std::thread> _thr;
+    std::vector<std::thread> _thr_pool;
+    MyQueue _my_queue;
 public:
-    Server();
-    void init(int port);
-    void run();
+    explicit NetModule(int port);
     void end();
-    ~Server();
-    void act(int client_sock);
+    ~NetModule();
+    void chat(int client_sock);
+    void run();
     void disconnect(int id);
+    void thread_function();
 };
 
-#endif //INCLUDE_SERVER_HPP_
+#endif //INCLUDE_NETMODULE_HPP_

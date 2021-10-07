@@ -130,13 +130,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/include/Server.hpp">
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/include/NetModule.hpp">
 			<Option target="server_app"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/main/main.cpp">
 			<Option target="serv"/>
 		</Unit>
-		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/sources/Server.cpp">
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/sources/NetModule.cpp">
 			<Option target="server_app"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/CMakeLists.txt">

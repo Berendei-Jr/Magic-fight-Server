@@ -166,29 +166,29 @@ main/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serv.dir/build.make CMakeFiles/serv.dir/main/main.cpp.s
 .PHONY : main/main.cpp.s
 
-sources/Server.o: sources/Server.cpp.o
-.PHONY : sources/Server.o
+sources/NetModule.o: sources/NetModule.cpp.o
+.PHONY : sources/NetModule.o
 
 # target to build an object file
-sources/Server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/Server.cpp.o
-.PHONY : sources/Server.cpp.o
+sources/NetModule.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/NetModule.cpp.o
+.PHONY : sources/NetModule.cpp.o
 
-sources/Server.i: sources/Server.cpp.i
-.PHONY : sources/Server.i
+sources/NetModule.i: sources/NetModule.cpp.i
+.PHONY : sources/NetModule.i
 
 # target to preprocess a source file
-sources/Server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/Server.cpp.i
-.PHONY : sources/Server.cpp.i
+sources/NetModule.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/NetModule.cpp.i
+.PHONY : sources/NetModule.cpp.i
 
-sources/Server.s: sources/Server.cpp.s
-.PHONY : sources/Server.s
+sources/NetModule.s: sources/NetModule.cpp.s
+.PHONY : sources/NetModule.s
 
 # target to generate assembly for a file
-sources/Server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/Server.cpp.s
-.PHONY : sources/Server.cpp.s
+sources/NetModule.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/NetModule.cpp.s
+.PHONY : sources/NetModule.cpp.s
 
 # Help Target
 help:
@@ -203,9 +203,9 @@ help:
 	@echo "... main/main.o"
 	@echo "... main/main.i"
 	@echo "... main/main.s"
-	@echo "... sources/Server.o"
-	@echo "... sources/Server.i"
-	@echo "... sources/Server.s"
+	@echo "... sources/NetModule.o"
+	@echo "... sources/NetModule.i"
+	@echo "... sources/NetModule.s"
 .PHONY : help
 
 

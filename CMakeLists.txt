@@ -9,8 +9,8 @@ string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
 add_library(${PROJECT_NAME} STATIC
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Server.hpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/sources/Server.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/NetModule.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/NetModule.cpp
 )
 
 find_package(Threads)

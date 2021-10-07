@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/hellcat/Desktop/repos/Magic_fight/sources/Server.cpp" "/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/server_app.dir/sources/Server.cpp.o"
+  "/home/hellcat/Desktop/repos/Magic_fight/sources/NetModule.cpp" "/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/server_app.dir/sources/NetModule.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
