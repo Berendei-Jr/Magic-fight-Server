@@ -16,17 +16,17 @@ public:
     ~action();
 };
 
-class step: public action
+class make_step: public action
 {
 public:
-    step(hero* owner);
+    make_step(hero* owner);
     void DoIt(int direction);
 };
 
-class fireball: public action
+class make_fireball: public action
 {
 public:
-    fireball(hero* owner);
+    make_fireball(hero* owner);
     void DoIt(int direction);
 };
 #endif // ACTIONS_H

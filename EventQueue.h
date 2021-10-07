@@ -2,14 +2,15 @@
 #define EVENTQUEUE_H
 #include <queue>
 #include <ctime>
+#include "object.h"
 
 class Event
 {
 public:
-    Event(void (*func)());
+    Event(projectile* prod);
 private:
     int Time;
-    void  (*func)();
+    projectile* prod;
 
     void DoIt();
 
