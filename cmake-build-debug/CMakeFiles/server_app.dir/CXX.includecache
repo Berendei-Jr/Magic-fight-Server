@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/EventQueue.h
+queue
+-
+chrono
+-
+object.h
+../include/object.h
+
+../include/actions.h
+
+../include/board.h
+object.h
+../include/object.h
+list
+-
+EventQueue.h
+../include/EventQueue.h
+
+../include/object.h
+actions.h
+../include/actions.h
+SFML/Graphics.hpp
+-
+
+../include/projectiles.h
+object.h
+../include/object.h
+
+/home/hellcat/Desktop/repos/Magic_fight/sources/projectiles.cpp
+projectiles.h
+/home/hellcat/Desktop/repos/Magic_fight/sources/projectiles.h
+EventQueue.h
+/home/hellcat/Desktop/repos/Magic_fight/sources/EventQueue.h
+board.h
+/home/hellcat/Desktop/repos/Magic_fight/sources/board.h
+

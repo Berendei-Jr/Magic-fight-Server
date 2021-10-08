@@ -1,4 +1,4 @@
-#include "EventQueue.h"
+#include "../include/EventQueue.h"
 
 Event::Event(projectile* prod, int time){
     this->prod = prod;

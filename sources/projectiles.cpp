@@ -21,7 +21,7 @@ fireball::fireball(hexagon* position, int Creator, int direction):projectile(pos
     this->SpeedTime=1000;
     this->Creator=Creator;
     sf::Texture *fireball_texture = new sf::Texture;
-    fireball_texture->loadFromFile("img/fireball.png");
+    fireball_texture->loadFromFile("../img/fireball.png");
     this->sprite=sf::Sprite(*fireball_texture);
     Event* ev=new Event(this, this->SpeedTime);
     this->direction=direction;this->position->owner->event_queue.push(*ev);
