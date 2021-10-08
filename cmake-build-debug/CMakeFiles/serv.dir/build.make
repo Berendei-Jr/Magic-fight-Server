@@ -88,10 +88,21 @@ serv_EXTERNAL_OBJECTS =
 
 serv: CMakeFiles/serv.dir/main/main.cpp.o
 serv: CMakeFiles/serv.dir/build.make
-serv: libserver_app.a
-serv: /usr/lib/libsfml-graphics.so.2.5.1
-serv: /usr/lib/libsfml-window.so.2.5.1
-serv: /usr/lib/libsfml-system.so.2.5.1
+serv: libserver_appd.a
+serv: /usr/lib/libOpenGL.so
+serv: /usr/lib/libGLX.so
+serv: /usr/lib/libGLU.so
+serv: /home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/libsfml-graphics-s-d.a
+serv: /home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/libsfml-window-s-d.a
+serv: /home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/libsfml-system-s-d.a
+serv: /usr/lib/libudev.so
+serv: /usr/lib/libOpenGL.so
+serv: /usr/lib/libX11.so
+serv: /usr/lib/libXrandr.so
+serv: /home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/libfreetyped.a
+serv: /home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/libbz2d.a
+serv: /home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/libpngd.a
+serv: /home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/libzd.a
 serv: CMakeFiles/serv.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable serv"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serv.dir/link.txt --verbose=$(VERBOSE)

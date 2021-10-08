@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//The directory containing a CMake configuration file for BZip2.
+BZip2_DIR:PATH=/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/BZip2
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -38,8 +41,8 @@ CMAKE_CODEBLOCKS_MAKE_ARGUMENTS:STRING=-j6
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//CXX compiler
-CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
+//No help, variable specified on the command line.
+CMAKE_CXX_COMPILER:UNINITIALIZED=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -64,8 +67,8 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//C compiler
-CMAKE_C_COMPILER:STRING=/usr/bin/cc
+//No help, variable specified on the command line.
+CMAKE_C_COMPILER:UNINITIALIZED=/usr/bin/cc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -241,6 +244,36 @@ HUNTER_STATUS_PRINT:BOOL=ON
 //Enable/disable TLS certificate checking on downloads
 HUNTER_TLS_VERIFY:BOOL=ON
 
+//Path to a file.
+OPENGL_EGL_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a file.
+OPENGL_GLX_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a file.
+OPENGL_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+OPENGL_egl_LIBRARY:FILEPATH=/usr/lib/libEGL.so
+
+//Path to a library.
+OPENGL_glu_LIBRARY:FILEPATH=/usr/lib/libGLU.so
+
+//Path to a library.
+OPENGL_glx_LIBRARY:FILEPATH=/usr/lib/libGLX.so
+
+//Path to a library.
+OPENGL_opengl_LIBRARY:FILEPATH=/usr/lib/libOpenGL.so
+
+//Path to a file.
+OPENGL_xmesa_INCLUDE_DIR:PATH=OPENGL_xmesa_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+OpenGL_LIB:FILEPATH=/usr/lib/libOpenGL.so
+
+//The directory containing a CMake configuration file for PNG.
+PNG_DIR:PATH=/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/PNG
+
 //Path to a program.
 ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
@@ -248,10 +281,25 @@ ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/bin/sysctl
 
 //The directory containing a CMake configuration file for SFML.
-SFML_DIR:PATH=/usr/lib64/cmake/SFML
+SFML_DIR:PATH=/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/SFML
 
 //Path to a file.
 SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
+
+//Path to a library.
+UDev_LIB:FILEPATH=/usr/lib/libudev.so
+
+//Path to a library.
+X11_LIB:FILEPATH=/usr/lib/libX11.so
+
+//Path to a library.
+Xrandr_LIB:FILEPATH=/usr/lib/libXrandr.so
+
+//The directory containing a CMake configuration file for ZLIB.
+ZLIB_DIR:PATH=/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/ZLIB
+
+//The directory containing a CMake configuration file for freetype.
+freetype_DIR:PATH=/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/freetype
 
 //Value Computed by CMake
 server_app_BINARY_DIR:STATIC=/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug
@@ -316,6 +364,7 @@ CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+CMAKE_DEBUG_POSTFIX:INTERNAL=d
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Executable file format
@@ -391,6 +440,7 @@ CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
+CMAKE_RELEASE_POSTFIX:INTERNAL=
 //Path to CMake installation.
 CMAKE_ROOT:INTERNAL=/home/hellcat/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5284.51/bin/cmake/linux/share/cmake-3.20
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
@@ -423,14 +473,44 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding OpenGL
+FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/usr/lib/libOpenGL.so][/usr/lib/libGLX.so][/usr/include][c ][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+HUNTER_CACHED_BUILD_SHARED_LIBS:INTERNAL=
+HUNTER_CACHED_CONFIGURATION_TYPES:INTERNAL=Release;Debug
 HUNTER_CACHED_ROOT:INTERNAL=/home/hellcat/.hunter
+HUNTER_CONFIG_SHA1:INTERNAL=8a1641b5e80b06ea8ea06a828946ecab8690788f
 HUNTER_SHA1:INTERNAL=5659b15dc0884d4b03dbd95710e6a1fa0fc3258d
+HUNTER_TOOLCHAIN_SHA1:INTERNAL=cb3d9e0180b6899f459b088bdb12e59da2fc9eaa
 HUNTER_URL:INTERNAL=https://github.com/cpp-pm/hunter/archive/v0.23.251.tar.gz
 HUNTER_VERSION:INTERNAL=0.23.251
+//ADVANCED property for variable: OPENGL_EGL_INCLUDE_DIR
+OPENGL_EGL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_GLX_INCLUDE_DIR
+OPENGL_GLX_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_INCLUDE_DIR
+OPENGL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_egl_LIBRARY
+OPENGL_egl_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_glu_LIBRARY
+OPENGL_glu_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_glx_LIBRARY
+OPENGL_glx_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_opengl_LIBRARY
+OPENGL_opengl_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_xmesa_INCLUDE_DIR
+OPENGL_xmesa_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenGL_LIB
+OpenGL_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_nproc
 ProcessorCount_cmd_nproc-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl
 ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: UDev_LIB
+UDev_LIB-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: X11_LIB
+X11_LIB-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Xrandr_LIB
+Xrandr_LIB-ADVANCED:INTERNAL=1
 

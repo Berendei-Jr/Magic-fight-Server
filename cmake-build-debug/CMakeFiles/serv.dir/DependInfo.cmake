@@ -12,9 +12,16 @@ set(CMAKE_DEPENDS_CHECK_CXX
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "SFML_STATIC"
+  )
+
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
+  "../"
+  "/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/include"
   )
 
 # The set of dependency files which are needed:

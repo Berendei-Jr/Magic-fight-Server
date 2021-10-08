@@ -5,7 +5,7 @@
 		<Option title="server_app"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\.hunter\;CMake Files\..\..\..\.hunter\_Base\;CMake Files\..\..\..\.hunter\_Base\Download\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib64\;CMake Files\..\..\..\..\..\usr\lib64\cmake\;CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\.hunter\;CMake Files\..\..\..\.hunter\_Base\;CMake Files\..\..\..\.hunter\_Base\Download\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\configs\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\projects\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\projects\SFML\;CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\scripts\;CMake Files\..\..\..\.hunter\_Base\5659b15\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\SFML\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\freetype\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\PNG\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\ZLIB\;CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\BZip2\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\_3rdParty\;CMake Files\cmake-build-debug\_3rdParty\Hunter\;CMake Files\cmake-build-debug\_3rdParty\Hunter\toolchain\;CMake Files\cmake-build-debug\_3rdParty\Hunter\config-id\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug"/>
@@ -44,7 +44,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DSFML_STATIC"/>
 					<Add directory="/home/hellcat/Desktop/repos/Magic_fight/include"/>
+					<Add directory="/home/hellcat/Desktop/repos/Magic_fight"/>
+					<Add directory="/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
@@ -67,7 +70,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DSFML_STATIC"/>
 					<Add directory="/home/hellcat/Desktop/repos/Magic_fight/include"/>
+					<Add directory="/home/hellcat/Desktop/repos/Magic_fight"/>
+					<Add directory="/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
@@ -84,13 +90,15 @@
 				</MakeCommands>
 			</Target>
 			<Target title="server_app">
-				<Option output="/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/libserver_app.a" prefix_auto="0" extension_auto="0"/>
+				<Option output="/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/libserver_appd.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/hellcat/Desktop/repos/Magic_fight/include"/>
+					<Add directory="/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/include"/>
+					<Add directory="/home/hellcat/Desktop/repos/Magic_fight"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
@@ -107,13 +115,15 @@
 				</MakeCommands>
 			</Target>
 			<Target title="server_app/fast">
-				<Option output="/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/libserver_app.a" prefix_auto="0" extension_auto="0"/>
+				<Option output="/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/libserver_appd.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/hellcat/Desktop/repos/Magic_fight/include"/>
+					<Add directory="/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/include"/>
+					<Add directory="/home/hellcat/Desktop/repos/Magic_fight"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
@@ -184,6 +194,9 @@
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_add_package.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_add_version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_apply_copy_rules.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
@@ -196,7 +209,13 @@
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_cache_run.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_cache_server_password.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_cacheable.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake">
@@ -217,7 +236,34 @@
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_config.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_create_args_file.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_create_cache_file.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_create_cache_meta_directory.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_create_dependency_entry.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_create_deps_info.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_default_version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_download.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_download_cache_meta_file.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_download_cache_raw_file.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_download_server_url.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_error_page.cmake">
@@ -226,19 +272,55 @@
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_fatal_error.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_final_config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_finalize.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_find_licenses.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_find_stamps.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_flush_cache_variables.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_cacheable.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_cmake_args.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_configuration_types.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_git_executable.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_keep_package_sources.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_package_deps.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_package_deps_recurse.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_package_sha1.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_package_url.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_passwords_path.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_project_files_to_load.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_get_source_subdir.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_http_password.cmake">
@@ -253,10 +335,19 @@
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_internal_error.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_jobs_number.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_load_from_cache.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_lock_directory.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_make_directory.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_pack_directory.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_pack_git_self.cmake">
@@ -268,6 +359,12 @@
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_parse_cmake_args_for_keyword.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_patch_unrelocatable_text_files.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_pick_scheme.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_print_cmd.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
@@ -277,7 +374,16 @@
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_private_data_password.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_read_http_credentials.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_register_dependency.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_sanity_checks.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_save_to_cache.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_set_config_location.cmake">
@@ -295,29 +401,122 @@
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_step_into_unpacked_directory.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_unpack_directory.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_unsetvar.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_upload_cache.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_upload_password.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_upload_single_file.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_upload_to_custom_server.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
+		</Unit>
 		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/modules/hunter_user_error.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\modules\"/>
 		</Unit>
-		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../../../usr/lib64/cmake/SFML/SFMLConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/configs/default.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\configs\"/>
 		</Unit>
-		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../../../usr/lib64/cmake/SFML/SFMLConfigDependencies.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/cmake/projects/SFML/hunter.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\cmake\projects\SFML\"/>
 		</Unit>
-		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../../../usr/lib64/cmake/SFML/SFMLConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/Download/Hunter/0.23.251/5659b15/Unpacked/scripts/create-toolchain-info.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\Download\Hunter\0.23.251\5659b15\Unpacked\scripts\"/>
 		</Unit>
-		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../../../usr/lib64/cmake/SFML/SFMLSharedTargets-release.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\"/>
 		</Unit>
-		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../../../usr/lib64/cmake/SFML/SFMLSharedTargets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/SFML/SFMLConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/SFML/SFMLConfigDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/SFML/SFMLConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/SFML/SFMLStaticTargets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/SFML/SFMLStaticTargets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/SFML/SFMLStaticTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/freetype/freetype-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\freetype\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/freetype/freetype-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\freetype\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/freetype/freetype-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\freetype\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/freetype/freetypeConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\freetype\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/freetype/freetypeConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\freetype\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/PNG/PNGConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\PNG\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/PNG/PNGConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\PNG\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/PNG/PNGTargets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\PNG\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/PNG/PNGTargets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\PNG\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/PNG/PNGTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\PNG\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/ZLIB/ZLIBConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\ZLIB\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/ZLIB/ZLIBConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\ZLIB\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/ZLIB/ZLIBTargets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\ZLIB\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/ZLIB/ZLIBTargets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\ZLIB\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/ZLIB/ZLIBTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\ZLIB\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/BZip2/BZip2Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\BZip2\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/BZip2/BZip2ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\BZip2\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/BZip2/BZip2Targets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\BZip2\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/BZip2/BZip2Targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\BZip2\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/../../../.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/lib/cmake/BZip2/BZip2Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\.hunter\_Base\5659b15\cb3d9e0\8a1641b\Install\lib\cmake\BZip2\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/_3rdParty/Hunter/toolchain/toolchain.info.NOLF">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_3rdParty\Hunter\toolchain\"/>
+		</Unit>
+		<Unit filename="/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/_3rdParty/Hunter/config-id/config.cmake.NOLF">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_3rdParty\Hunter\config-id\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

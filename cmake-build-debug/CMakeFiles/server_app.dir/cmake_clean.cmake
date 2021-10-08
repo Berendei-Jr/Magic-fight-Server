@@ -5,8 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/server_app.dir/sources/board.cpp.o"
   "CMakeFiles/server_app.dir/sources/object.cpp.o"
   "CMakeFiles/server_app.dir/sources/projectiles.cpp.o"
-  "libserver_app.a"
-  "libserver_app.pdb"
+  "libserver_appd.a"
+  "libserver_appd.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

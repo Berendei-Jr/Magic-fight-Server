@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/hellcat/Desktop/repos/Magic_fight/include
+CXX_INCLUDES = -I/home/hellcat/Desktop/repos/Magic_fight/include -I/home/hellcat/.hunter/_Base/5659b15/cb3d9e0/8a1641b/Install/include -I/home/hellcat/Desktop/repos/Magic_fight
 
 CXX_FLAGS = -g -std=gnu++17
 
