@@ -128,3 +128,7 @@ void board::ChangeHash()
 {
     this->hash++;
 }
+
+void board::Tick(){
+    this->event_queue.tick();
+}

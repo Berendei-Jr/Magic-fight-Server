@@ -23,8 +23,6 @@ make_fireball::make_fireball(hero* owner):action(owner){}
 
 void make_fireball::DoIt(int direction)
 {
-    sf::Texture *fireball_texture = new sf::Texture;
-    fireball_texture->loadFromFile("img/fireball.png");
     this->owner->position->owner->ChangeHash();
     new fireball(this->owner->position->NextHex(direction), this->owner->number, direction);
 }
