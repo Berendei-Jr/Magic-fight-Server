@@ -65,6 +65,7 @@ int main()
 
             }
         }
+        B.Tick();
         if (saved_hash!=B.GetHash())
         {
             saved_hash=B.GetHash();

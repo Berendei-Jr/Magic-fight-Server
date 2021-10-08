@@ -40,6 +40,7 @@ class board
         hexagon* HexByCoordinates(int x, int y);
         void ChangeHash();
         int GetHash();
+        void Tick();
     private:
         int hash;
 };

@@ -1,15 +1,15 @@
 #ifndef EVENTQUEUE_H
 #define EVENTQUEUE_H
 #include <queue>
-#include <ctime>
+#include <chrono>
 #include "object.h"
 
 class Event
 {
 public:
-    Event(projectile* prod);
+    Event(projectile* prod, int time);
 private:
-    int Time;
+    std::chrono::milliseconds Time;
     projectile* prod;
 
     void DoIt();
