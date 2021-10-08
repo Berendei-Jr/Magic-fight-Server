@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/NetModule.hpp
+sys/socket.h
+-
+sys/types.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+unistd.h
+-
+iostream
+-
+vector
+-
+queue
+-
+thread
+-
+mutex
+-
+cstring
+-
+memory
+-
+
+/home/hellcat/Desktop/repos/Magic_fight/main/main.cpp
+NetModule.hpp
+/home/hellcat/Desktop/repos/Magic_fight/main/NetModule.hpp
+iostream
+-
+thread
+-
+

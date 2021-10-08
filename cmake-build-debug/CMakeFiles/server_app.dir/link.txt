@@ -1,0 +1,2 @@
+/usr/bin/ar qc libserver_app.a CMakeFiles/server_app.dir/sources/NetModule.cpp.o
+/usr/bin/ranlib libserver_app.a
