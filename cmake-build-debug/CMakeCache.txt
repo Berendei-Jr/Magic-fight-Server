@@ -223,11 +223,35 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Hunter configuration types
+HUNTER_CONFIGURATION_TYPES:STRING=Release;Debug
+
+//Enable Hunter package manager support
+HUNTER_ENABLED:BOOL=ON
+
+//Override the HUNTER_ROOT.
+HUNTER_ROOT:FILEPATH=
+
+//Print a lot info
+HUNTER_STATUS_DEBUG:BOOL=OFF
+
+//Print working status
+HUNTER_STATUS_PRINT:BOOL=ON
+
+//Enable/disable TLS certificate checking on downloads
+HUNTER_TLS_VERIFY:BOOL=ON
+
 //Path to a program.
 ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/bin/sysctl
+
+//The directory containing a CMake configuration file for SFML.
+SFML_DIR:PATH=/usr/lib64/cmake/SFML
+
+//Path to a file.
+SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
 
 //Value Computed by CMake
 server_app_BINARY_DIR:STATIC=/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug
@@ -401,6 +425,10 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+HUNTER_CACHED_ROOT:INTERNAL=/home/hellcat/.hunter
+HUNTER_SHA1:INTERNAL=5659b15dc0884d4b03dbd95710e6a1fa0fc3258d
+HUNTER_URL:INTERNAL=https://github.com/cpp-pm/hunter/archive/v0.23.251.tar.gz
+HUNTER_VERSION:INTERNAL=0.23.251
 //ADVANCED property for variable: ProcessorCount_cmd_nproc
 ProcessorCount_cmd_nproc-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl

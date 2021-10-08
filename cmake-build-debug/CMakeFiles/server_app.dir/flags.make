@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/hellcat/Desktop/repos/Magic_fight/include
 
-CXX_FLAGS =  -pedantic -Werror -Wall -Wextra -Wno-unused-command-line-argument -Wshadow -Wnon-virtual-dtor -g -std=gnu++17
+CXX_FLAGS = -g -std=gnu++17
 

@@ -166,6 +166,30 @@ main/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serv.dir/build.make CMakeFiles/serv.dir/main/main.cpp.s
 .PHONY : main/main.cpp.s
 
+sources/EventQueue.o: sources/EventQueue.cpp.o
+.PHONY : sources/EventQueue.o
+
+# target to build an object file
+sources/EventQueue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/EventQueue.cpp.o
+.PHONY : sources/EventQueue.cpp.o
+
+sources/EventQueue.i: sources/EventQueue.cpp.i
+.PHONY : sources/EventQueue.i
+
+# target to preprocess a source file
+sources/EventQueue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/EventQueue.cpp.i
+.PHONY : sources/EventQueue.cpp.i
+
+sources/EventQueue.s: sources/EventQueue.cpp.s
+.PHONY : sources/EventQueue.s
+
+# target to generate assembly for a file
+sources/EventQueue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/EventQueue.cpp.s
+.PHONY : sources/EventQueue.cpp.s
+
 sources/NetModule.o: sources/NetModule.cpp.o
 .PHONY : sources/NetModule.o
 
@@ -190,6 +214,102 @@ sources/NetModule.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/NetModule.cpp.s
 .PHONY : sources/NetModule.cpp.s
 
+sources/actions.o: sources/actions.cpp.o
+.PHONY : sources/actions.o
+
+# target to build an object file
+sources/actions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/actions.cpp.o
+.PHONY : sources/actions.cpp.o
+
+sources/actions.i: sources/actions.cpp.i
+.PHONY : sources/actions.i
+
+# target to preprocess a source file
+sources/actions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/actions.cpp.i
+.PHONY : sources/actions.cpp.i
+
+sources/actions.s: sources/actions.cpp.s
+.PHONY : sources/actions.s
+
+# target to generate assembly for a file
+sources/actions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/actions.cpp.s
+.PHONY : sources/actions.cpp.s
+
+sources/board.o: sources/board.cpp.o
+.PHONY : sources/board.o
+
+# target to build an object file
+sources/board.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/board.cpp.o
+.PHONY : sources/board.cpp.o
+
+sources/board.i: sources/board.cpp.i
+.PHONY : sources/board.i
+
+# target to preprocess a source file
+sources/board.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/board.cpp.i
+.PHONY : sources/board.cpp.i
+
+sources/board.s: sources/board.cpp.s
+.PHONY : sources/board.s
+
+# target to generate assembly for a file
+sources/board.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/board.cpp.s
+.PHONY : sources/board.cpp.s
+
+sources/object.o: sources/object.cpp.o
+.PHONY : sources/object.o
+
+# target to build an object file
+sources/object.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/object.cpp.o
+.PHONY : sources/object.cpp.o
+
+sources/object.i: sources/object.cpp.i
+.PHONY : sources/object.i
+
+# target to preprocess a source file
+sources/object.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/object.cpp.i
+.PHONY : sources/object.cpp.i
+
+sources/object.s: sources/object.cpp.s
+.PHONY : sources/object.s
+
+# target to generate assembly for a file
+sources/object.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/object.cpp.s
+.PHONY : sources/object.cpp.s
+
+sources/projectiles.o: sources/projectiles.cpp.o
+.PHONY : sources/projectiles.o
+
+# target to build an object file
+sources/projectiles.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/projectiles.cpp.o
+.PHONY : sources/projectiles.cpp.o
+
+sources/projectiles.i: sources/projectiles.cpp.i
+.PHONY : sources/projectiles.i
+
+# target to preprocess a source file
+sources/projectiles.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/projectiles.cpp.i
+.PHONY : sources/projectiles.cpp.i
+
+sources/projectiles.s: sources/projectiles.cpp.s
+.PHONY : sources/projectiles.s
+
+# target to generate assembly for a file
+sources/projectiles.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_app.dir/build.make CMakeFiles/server_app.dir/sources/projectiles.cpp.s
+.PHONY : sources/projectiles.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -203,9 +323,24 @@ help:
 	@echo "... main/main.o"
 	@echo "... main/main.i"
 	@echo "... main/main.s"
+	@echo "... sources/EventQueue.o"
+	@echo "... sources/EventQueue.i"
+	@echo "... sources/EventQueue.s"
 	@echo "... sources/NetModule.o"
 	@echo "... sources/NetModule.i"
 	@echo "... sources/NetModule.s"
+	@echo "... sources/actions.o"
+	@echo "... sources/actions.i"
+	@echo "... sources/actions.s"
+	@echo "... sources/board.o"
+	@echo "... sources/board.i"
+	@echo "... sources/board.s"
+	@echo "... sources/object.o"
+	@echo "... sources/object.i"
+	@echo "... sources/object.s"
+	@echo "... sources/projectiles.o"
+	@echo "... sources/projectiles.i"
+	@echo "... sources/projectiles.s"
 .PHONY : help
 
 

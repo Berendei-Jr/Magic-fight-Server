@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+../include/EventQueue.h
+queue
+-
+chrono
+-
+object.h
+../include/object.h
+
 ../include/NetModule.hpp
 sys/socket.h
 -
@@ -32,11 +40,37 @@ cstring
 memory
 -
 
+../include/actions.h
+
+../include/board.h
+object.h
+../include/object.h
+list
+-
+EventQueue.h
+../include/EventQueue.h
+
+../include/klibriry.h
+
+../include/object.h
+actions.h
+../include/actions.h
+SFML/Graphics.hpp
+-
+
 /home/hellcat/Desktop/repos/Magic_fight/main/main.cpp
-NetModule.hpp
-/home/hellcat/Desktop/repos/Magic_fight/main/NetModule.hpp
 iostream
 -
-thread
+map
+-
+object.h
+/home/hellcat/Desktop/repos/Magic_fight/main/object.h
+board.h
+/home/hellcat/Desktop/repos/Magic_fight/main/board.h
+klibriry.h
+/home/hellcat/Desktop/repos/Magic_fight/main/klibriry.h
+SFML/Graphics.hpp
+-
+NetModule.hpp
 -
 

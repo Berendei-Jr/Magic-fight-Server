@@ -11,6 +11,7 @@
 -- Check for working CXX compiler: /usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
+-- Found SFML 2.5.1 in /usr/lib64/cmake/SFML
 -- Looking for pthread.h
 -- Looking for pthread.h - found
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD

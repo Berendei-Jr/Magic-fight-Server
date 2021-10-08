@@ -1,5 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/server_app.dir/sources/EventQueue.cpp.o"
   "CMakeFiles/server_app.dir/sources/NetModule.cpp.o"
+  "CMakeFiles/server_app.dir/sources/actions.cpp.o"
+  "CMakeFiles/server_app.dir/sources/board.cpp.o"
+  "CMakeFiles/server_app.dir/sources/object.cpp.o"
+  "CMakeFiles/server_app.dir/sources/projectiles.cpp.o"
   "libserver_app.a"
   "libserver_app.pdb"
 )

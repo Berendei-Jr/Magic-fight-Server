@@ -8,7 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/hellcat/Desktop/repos/Magic_fight/sources/EventQueue.cpp" "/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/server_app.dir/sources/EventQueue.cpp.o"
   "/home/hellcat/Desktop/repos/Magic_fight/sources/NetModule.cpp" "/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/server_app.dir/sources/NetModule.cpp.o"
+  "/home/hellcat/Desktop/repos/Magic_fight/sources/actions.cpp" "/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/server_app.dir/sources/actions.cpp.o"
+  "/home/hellcat/Desktop/repos/Magic_fight/sources/board.cpp" "/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/server_app.dir/sources/board.cpp.o"
+  "/home/hellcat/Desktop/repos/Magic_fight/sources/object.cpp" "/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/server_app.dir/sources/object.cpp.o"
+  "/home/hellcat/Desktop/repos/Magic_fight/sources/projectiles.cpp" "/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/server_app.dir/sources/projectiles.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

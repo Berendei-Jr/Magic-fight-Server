@@ -89,6 +89,9 @@ serv_EXTERNAL_OBJECTS =
 serv: CMakeFiles/serv.dir/main/main.cpp.o
 serv: CMakeFiles/serv.dir/build.make
 serv: libserver_app.a
+serv: /usr/lib/libsfml-graphics.so.2.5.1
+serv: /usr/lib/libsfml-window.so.2.5.1
+serv: /usr/lib/libsfml-system.so.2.5.1
 serv: CMakeFiles/serv.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable serv"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serv.dir/link.txt --verbose=$(VERBOSE)
