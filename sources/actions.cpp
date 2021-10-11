@@ -1,7 +1,7 @@
-#include "actions.h"
-#include "object.h"
-#include "board.h"
-#include "projectiles.h"
+#include "../include/actions.h"
+#include "../include/object.h"
+#include "../include/board.h"
+#include "../include/projectiles.h"
 action::action(hero* owner){
     this->owner=owner;
 }

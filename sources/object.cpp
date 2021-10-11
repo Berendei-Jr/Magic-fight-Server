@@ -1,5 +1,5 @@
-#include "object.h"
-#include "board.h"
+#include "../include/object.h"
+#include "../include/board.h"
 object::object(hexagon* position)
 {
     this->position=position;
