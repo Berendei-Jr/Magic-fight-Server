@@ -2,9 +2,44 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="sources/projectiles.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1176" topLine="33" />
+			<Cursor1 position="0" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="main/main.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2552" topLine="60" />
+		</Cursor>
+	</File>
+	<File name="include/actions.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="162" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="sources/EventQueue.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="422" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/object.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="790" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="sources/actions.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="260" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="sources/object.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="764" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/EventQueue.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="147" topLine="4" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
