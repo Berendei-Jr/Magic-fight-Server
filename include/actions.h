@@ -11,6 +11,7 @@ class action
 {
 public:
     action(hero* owner);
+    int mana_costs;
     hero* owner;
     virtual void DoIt(int direction)=0;
     ~action();

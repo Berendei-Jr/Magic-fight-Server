@@ -5,15 +5,31 @@
 
 class hexagon;
 
+class Action_class
+{
+public:
+    virtual void TickAction()=0;
+    int SpeedTime;
+};
+
+class mana_creator
+{
+private:
+
+    int mana_count;
+public:
+    mana_creator();
+    void TickAction();
+};
+
 class object
 {
 public:
     std::string type;
-    char icon;
     hexagon* position;
+    object(hexagon* position);
     sf::Sprite sprite;
 
-    object(hexagon* position);
     virtual void destroy()=0;
     virtual ~object();
 
@@ -31,6 +47,8 @@ public:
     int health;
     action* skills[4];
     int number;
+    int max_mana;
+    int cur_mana;
 
     void destroy();
     ~hero();
@@ -38,7 +56,7 @@ private:
 
 };
 
-class projectile: public object
+class projectile: public object, public Action_class
 {
 public:
     projectile(hexagon* position, int Creator);
@@ -47,7 +65,7 @@ public:
     int SpeedTime;
     int Creator;
 
-    virtual void TickAction()=0;
+
     virtual void destroy()=0;
     virtual ~projectile();
 
