@@ -46,6 +46,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<INSTALL_INTERFACE:include>"
   "${SFML_ROOT}/include"
   "${OPENGL_INCLUDE_DIRS}"
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/img>"
 )
 
 target_link_libraries(serv PUBLIC ${PROJECT_NAME} Threads::Threads ${OPENGL_LIBRARIES} sfml-graphics)
