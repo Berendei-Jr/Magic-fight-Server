@@ -1,7 +1,7 @@
 #include "../include/EventQueue.h"
 
-Event::Event(projectile* prod, int time){
-    this->prod = prod;
+Event::Event(Action_class* act, int time){
+    this->act = act;
     auto now = std::chrono::system_clock::now();
     auto now_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(now);
     auto epoch = now_ms.time_since_epoch();
@@ -9,7 +9,7 @@ Event::Event(projectile* prod, int time){
 }
 
 void Event::DoIt(){
-    this->prod->TickAction();
+    this->act->TickAction();
 }
 EventQueue::EventQueue()
 {

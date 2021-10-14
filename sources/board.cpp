@@ -1,4 +1,4 @@
-#include "board.h"
+#include "../include/board.h"
 #include <iostream>
 #include <list>
 hexagon::hexagon(board* owner)

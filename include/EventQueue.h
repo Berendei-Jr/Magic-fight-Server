@@ -7,10 +7,10 @@
 class Event
 {
 public:
-    Event(projectile* prod, int time);
+    Event(Action_class* act, int time);
 private:
     std::chrono::milliseconds Time;
-    projectile* prod;
+    Action_class* act;
 
     void DoIt();
 

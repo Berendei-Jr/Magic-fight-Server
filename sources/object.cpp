@@ -1,5 +1,6 @@
-#include "object.h"
-#include "board.h"
+#include "../include/object.h"
+#include "../include/board.h"
+#include "../include/EventQueue.h"
 object::object(hexagon* position)
 {
     this->position=position;
@@ -10,7 +11,7 @@ object::~object(){}
 hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int number):object(position)
 {
     this->type="hero";
-    this->icon='0';
+    this->max_mana=100;
     this->health=100;
     this->number=number;
     this->sprite= sf::Sprite(textr);
@@ -25,6 +26,8 @@ hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int
             break;
         }
     }
+    this->cur_mana=this->max_mana;
+    //object* mana_creator
 
 }
 

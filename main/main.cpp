@@ -1,10 +1,10 @@
 #include <iostream>
 #include <map>
-#include "object.h"
-#include "board.h"
-#include "klibriry.h"
+#include "../include/object.h"
+#include "../include/board.h"
+#include "../include/klibriry.h"
 #include <SFML/Graphics.hpp>
-#include <NetModule.hpp>
+//#include <NetModule.hpp>
 
 void CoordinatesAdapter (int* a){
     const int zx=27;
@@ -30,13 +30,13 @@ int main()
     hero_actions[2]=Step;
     hero_actions[3]=Step;
     sf::Texture hero_texture;
-    if (!hero_texture.loadFromFile("../img/hero.png"))
+    if (!hero_texture.loadFromFile("img/hero.png"))
         return EXIT_FAILURE;
     hero H(B.center, hero_texture, hero_actions, 1);
     //hero H2(B.center, hero_texture, hero_actions, 2);
     sf::RenderWindow window(sf::VideoMode(486, 434), "Magic Fight");
     sf::Texture board_textr;
-    if (!board_textr.loadFromFile("../img/board.png"))
+    if (!board_textr.loadFromFile("img/board.png"))
         return EXIT_FAILURE;
     sf::Sprite board(board_textr);
 
