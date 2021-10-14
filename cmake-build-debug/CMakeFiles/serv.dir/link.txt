@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/serv.dir/main/main.cpp.o -o serv  libserver_app.a /usr/lib/libsfml-graphics.so.2.5.1 -lpthread /usr/lib/libsfml-window.so.2.5.1 /usr/lib/libsfml-system.so.2.5.1 

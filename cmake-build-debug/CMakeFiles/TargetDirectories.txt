@@ -1,4 +1,0 @@
-/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/serv.dir
-/home/hellcat/Desktop/repos/Magic_fight/cmake-build-debug/CMakeFiles/server_app.dir

@@ -11,7 +11,7 @@ HunterGate(
 )
 
 project(server_app)
-#tring(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
+#string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 #string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 #string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
@@ -31,9 +31,10 @@ add_library(${PROJECT_NAME} STATIC
         sources/NetModule.cpp
 )
 
-#hunter_add_package(SFML)
+hunter_add_package(SFML)
 
 find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
+find_package(OpenGL REQUIRED)
 find_package(Threads)
 
 add_executable(serv
@@ -43,7 +44,8 @@ add_executable(serv
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:include>"
- # "${SFML_ROOT}/include"
+  "${SFML_ROOT}/include"
+  "${OPENGL_INCLUDE_DIRS}"
 )
 
-target_link_libraries(serv PUBLIC ${PROJECT_NAME} Threads::Threads sfml-graphics)
+target_link_libraries(serv PUBLIC ${PROJECT_NAME} Threads::Threads ${OPENGL_LIBRARIES} sfml-graphics)
