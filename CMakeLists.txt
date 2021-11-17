@@ -23,12 +23,14 @@ add_library(${PROJECT_NAME} STATIC
         include/klibriry.h
         include/object.h
         include/projectiles.h
+        include/action_classes.h
         sources/actions.cpp
         sources/board.cpp
         sources/EventQueue.cpp
         sources/object.cpp
         sources/projectiles.cpp
         sources/NetModule.cpp
+        sources/action_classes.cpp
 )
 
 hunter_add_package(SFML)
