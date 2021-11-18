@@ -8,6 +8,7 @@ class Event
 {
 public:
     Event(Action_class* act, int time);
+    friend bool operator< (const Event &ev1, const Event &ev2);
 private:
     std::chrono::milliseconds Time;
     Action_class* act;
@@ -31,7 +32,7 @@ class EventQueue
     protected:
 
     private:
-        std::queue <Event> qu;
+        std::priority_queue <Event> qu;
 };
 
 #endif // EVENTQUEUE_H

@@ -6,9 +6,7 @@ action::action(hero* owner){
     this->owner=owner;
 }
 
-make_step::make_step(hero* owner):action(owner){
-    this->mana_costs=10;
-}
+make_step::make_step(hero* owner):action(owner){}
 
 void make_step::DoIt(int direction)
 {
@@ -23,9 +21,7 @@ void make_step::DoIt(int direction)
     }
 }
 
-make_fireball::make_fireball(hero* owner):action(owner){
-    this->mana_costs=50;
-}
+make_fireball::make_fireball(hero* owner):action(owner){}
 
 void make_fireball::DoIt(int direction)
 {
