@@ -63,3 +63,13 @@ class_wizard::class_wizard(hero* owner):passive_action(owner){
 }
 
 void class_wizard::DoIt(int direction){}
+
+potion::potion(hero* owner, int amount):action(owner){
+    this->amount=amount;
+}
+
+void potion::DoIt(int direction){}
+
+smoke_grenade::smoke_grenade(hero* owner, int amount):potion(owner, amount){}
+
+void smoke_grenade::DoIt(int diretion){}

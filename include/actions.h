@@ -5,7 +5,8 @@ enum ActionsList {
     Step,
     Fireball,
     Leap,
-    Wizard
+    Wizard,
+    Smoke
 };
 class hero;
 
@@ -52,6 +53,7 @@ public:
     passive_action(hero* owner);
 
     void DoIt(int direction);
+protected:
     int mana_costs=0;
 };
 
@@ -60,6 +62,23 @@ class class_wizard: public passive_action
 public:
     class_wizard(hero* owner);
     void DoIt(int direction);
+};
+
+class potion: public action
+{
+public:
+    potion (hero* owner, int amount);
+    void DoIt(int direction);
+protected:
+    int amount;
+    int mana_costs=0;
+};
+
+class smoke_grenade: public potion
+{
+public:
+    smoke_grenade(hero* owner, int amount);
+    void DoIt(int diretion);
 };
 
 #endif // ACTIONS_H
