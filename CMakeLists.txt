@@ -16,7 +16,6 @@ project(server_app)
 #string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
 add_library(${PROJECT_NAME} STATIC
-        include/NetModule.hpp
         include/actions.h
         include/board.h
         include/EventQueue.h
@@ -29,7 +28,6 @@ add_library(${PROJECT_NAME} STATIC
         sources/EventQueue.cpp
         sources/object.cpp
         sources/projectiles.cpp
-        sources/NetModule.cpp
         sources/action_classes.cpp
 )
 
