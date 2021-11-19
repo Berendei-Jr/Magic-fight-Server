@@ -4,17 +4,13 @@
 #include "../include/board.h"
 #include "../include/klibriry.h"
 #include <SFML/Graphics.hpp>
-//#include <NetModule.hpp>
+#include <Server.hpp>
 
-void CoordinatesAdapter (int* a){
-    const int zx=27;
-    const int zy=47;
-    a[0]=(a[0]+a[0]-a[1])*zx+232;
-    a[1]=207-a[1]*zy;
-}
 int main()
 {
-    //NetModule NM(7777);
+   // net::Server Server(60000);
+  
+  
     const int radius = 5;
     board B(radius);
     char d, act_key;
@@ -40,53 +36,5 @@ int main()
         return EXIT_FAILURE;
     sf::Sprite board(board_textr);
 
-    sf::Time duration = sf::milliseconds(16);
-    while (window.isOpen())
-    {
-        sf::sleep(duration);
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-            if (event.type == sf::Event::KeyPressed)
-            {
-                d = event.key.code + 97;
-                if (b){
-                    it1 = direct.find(d);
-                    if (it1 != direct.end()){
-                        H.skills[it2->second]->DoIt(it1->second);
-                    }
-                    b=false;
-                } else {
-                    act_key=d;
-                    it2 = action_map.find(act_key);
-                    b=it2 !=action_map.end();
-                }
-
-            }
-        }
-        B.Tick();
-        if (saved_hash!=B.GetHash())
-        {
-            saved_hash=B.GetHash();
-            window.clear();
-            window.draw(board);
-            for(auto it=B.all_objects.begin(); it!=B.all_objects.end(); it++){
-                object* temporary = *it;
-                a = temporary->position->GetCoordinate();
-                std::cout << a[0] << " " << a[1]<< std::endl;
-                CoordinatesAdapter(a);
-                temporary->sprite.setPosition(a[0], a[1]);
-                window.draw(temporary->sprite);
-                delete[] a;
-            }
-            //window.draw(H.sprite);
-            window.display();
-        }
-
-    }
-    return EXIT_SUCCESS;
+    return 0;
 }
