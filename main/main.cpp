@@ -28,7 +28,7 @@ int main()
     hero_actions[0]=Step;
     hero_actions[1]=Fireball;
     hero_actions[2]=Leap;
-    hero_actions[3]=Step;
+    hero_actions[3]=Wizard;
     sf::Texture hero_texture;
     if (!hero_texture.loadFromFile("/home/supsun/Documents/Magic_fight/img/hero.png"))
         return EXIT_FAILURE;
