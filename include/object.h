@@ -9,18 +9,13 @@ class Action_class
 {
 public:
     virtual void TickAction()=0;
+    Action_class();
+    Action_class(int SpeedTime);
+protected:
     int SpeedTime;
 };
 
-class mana_creator
-{
-private:
 
-    int mana_count;
-public:
-    mana_creator();
-    void TickAction();
-};
 
 class object
 {
@@ -51,10 +46,13 @@ public:
     int cur_mana;
 
     void destroy();
+    void add_mana(int mana);
     ~hero();
 private:
 
 };
+
+
 
 class projectile: public object, public Action_class
 {

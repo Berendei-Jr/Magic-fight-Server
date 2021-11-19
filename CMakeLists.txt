@@ -23,12 +23,14 @@ add_library(${PROJECT_NAME} STATIC
         include/klibriry.h
         include/object.h
         include/projectiles.h
+        include/action_classes.h
         sources/actions.cpp
         sources/board.cpp
         sources/EventQueue.cpp
         sources/object.cpp
         sources/projectiles.cpp
         sources/NetModule.cpp
+        sources/action_classes.cpp
 )
 
 hunter_add_package(SFML)
@@ -46,6 +48,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<INSTALL_INTERFACE:include>"
   "${SFML_ROOT}/include"
   "${OPENGL_INCLUDE_DIRS}"
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/img>"
 )
 
 target_link_libraries(serv PUBLIC ${PROJECT_NAME} Threads::Threads ${OPENGL_LIBRARIES} sfml-graphics)
