@@ -56,7 +56,10 @@ void make_fireball::DoIt(int direction)
 
 passive_action::passive_action(hero* owner):action(owner){}
 
+void passive_action::DoIt(int direction){}
+
 class_wizard::class_wizard(hero* owner):passive_action(owner){
     new mana_creator(&this->owner->position->owner->event_queue, 1, owner, 1000);
 }
+
 void class_wizard::DoIt(int direction){}
