@@ -6,6 +6,7 @@ action::action(hero* owner){
     this->owner=owner;
 }
 
+
 make_step::make_step(hero* owner):action(owner){}
 
 void make_step::DoIt(int direction)
@@ -15,6 +16,27 @@ void make_step::DoIt(int direction)
     if (destination!=nullptr){
         this->owner->cur_mana-=this->mana_costs;
         this->owner->position->owner->ChangeHash();
+        this->owner->position->hex_objects.remove(owner);
+        this->owner->position=destination;
+        destination->hex_objects.push_back(owner);
+    }
+}
+
+make_leap::make_leap(hero* owner):action(owner){}
+
+void make_leap::DoIt(int direction)
+{
+    if (this->owner->cur_mana<this->mana_costs) return;
+    hexagon* destination = owner->position->NextHex(direction);
+    if (destination!=nullptr){
+        this->owner->cur_mana-=this->mana_costs;
+        this->owner->position->owner->ChangeHash();
+        this->owner->position->hex_objects.remove(owner);
+        this->owner->position=destination;
+        destination->hex_objects.push_back(owner);
+    }
+    destination = owner->position->NextHex(direction);
+    if (destination!=nullptr){
         this->owner->position->hex_objects.remove(owner);
         this->owner->position=destination;
         destination->hex_objects.push_back(owner);

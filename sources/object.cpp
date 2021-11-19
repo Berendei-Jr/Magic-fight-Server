@@ -25,6 +25,9 @@ hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int
         case Fireball:
             this->skills[i]=new make_fireball(this);
             break;
+        case Leap:
+            this->skills[i]=new make_leap(this);
+            break;
         }
     }
     this->cur_mana=this->max_mana;

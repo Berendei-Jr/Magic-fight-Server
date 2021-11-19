@@ -3,7 +3,8 @@
 
 enum ActionsList {
     Step,
-    Fireball
+    Fireball,
+    Leap
 };
 class hero;
 
@@ -24,6 +25,15 @@ public:
     void DoIt(int direction);
 private:
     int mana_costs = 10;
+};
+
+class make_leap: public action
+{
+public:
+    make_leap(hero* owner);
+    void DoIt(int direction);
+private:
+    int mana_costs = 30;
 };
 
 class make_fireball: public action
