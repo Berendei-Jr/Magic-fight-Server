@@ -2,6 +2,7 @@
 #include "../include/object.h"
 #include "../include/board.h"
 #include "../include/projectiles.h"
+#include "action_classes.h"
 action::action(hero* owner){
     this->owner=owner;
 }
@@ -52,3 +53,10 @@ void make_fireball::DoIt(int direction)
     this->owner->position->owner->ChangeHash();
     new fireball(this->owner->position->NextHex(direction), this->owner->number, direction);
 }
+
+passive_action::passive_action(hero* owner):action(owner){}
+
+class_wizard::class_wizard(hero* owner):passive_action(owner){
+    new mana_creator(&this->owner->position->owner->event_queue, 1, owner, 1000);
+}
+void class_wizard::DoIt(int direction){}

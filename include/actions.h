@@ -4,7 +4,8 @@
 enum ActionsList {
     Step,
     Fireball,
-    Leap
+    Leap,
+    Wizard
 };
 class hero;
 
@@ -15,7 +16,7 @@ public:
     int mana_costs;
     hero* owner;
     virtual void DoIt(int direction)=0;
-    ~action();
+    virtual ~action()=default;
 };
 
 class make_step: public action
@@ -44,4 +45,21 @@ public:
 private:
     int mana_costs = 50;
 };
+
+class passive_action: public action
+{
+public:
+    passive_action(hero* owner);
+
+    void DoIt(int direction);
+    int mana_costs=0;
+};
+
+class class_wizard: public passive_action
+{
+public:
+    class_wizard(hero* owner);
+    void DoIt(int direction);
+};
+
 #endif // ACTIONS_H

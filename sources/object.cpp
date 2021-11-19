@@ -28,10 +28,13 @@ hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int
         case Leap:
             this->skills[i]=new make_leap(this);
             break;
+        case Wizard:
+            this->skills[i]=new class_wizard(this);
+            break;
         }
     }
     this->cur_mana=this->max_mana;
-    new mana_creator(&this->position->owner->event_queue, 1, this, 100);
+    new mana_creator(&this->position->owner->event_queue, 1, this, 500);
     //object* mana_creator
 
 }
