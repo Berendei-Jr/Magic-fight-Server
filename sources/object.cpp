@@ -47,8 +47,6 @@ hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int
     this->swich_action(SkillNames);
     this->cur_mana=this->max_mana;
     new mana_creator(&this->position->owner->event_queue, 1, this, 500);
-    //object* mana_creator
-
 }
 void hero::add_mana(int mana){
     this->cur_mana+=mana;
@@ -58,6 +56,9 @@ void hero::add_mana(int mana){
 }
 void hero::get_damage(int damage){
     this->health-=damage;
+    if(this->health<=0){
+        this->destroy();
+    }
 }
 
 
@@ -80,6 +81,6 @@ hero::~hero(){}
 
 void hero::destroy(){
     this->position->DelObject(this);
-    this->~hero();
+    //this->~hero();
 }
 

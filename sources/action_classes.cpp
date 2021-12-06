@@ -11,6 +11,6 @@ mana_creator::mana_creator(EventQueue* queue, int mana_count, hero* owner, int S
 void mana_creator::TickAction(){
     this->owner->add_mana(this->mana_count);
     Event* ev=new Event(this, this->SpeedTime);
-    std::cout<<this->owner->cur_mana<<std::endl;
+    std::cout<<this->owner->number<< " " <<this->owner->cur_mana << " " << this->owner->health<<std::endl;
     this->queue->push(*ev);
 }

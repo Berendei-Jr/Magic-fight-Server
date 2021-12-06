@@ -10,14 +10,14 @@ void fireball::TickAction(){
         this->position=this->position->NextHex(this->direction);
         this->position->hex_objects.push_back(this);
         bool k = 0;
-        for (auto&  it : this->position->hex_objects)
-        {
-            object o = *it;
-            if (it->get_type()==1){
-                hero* tmp = dynamic_cast<hero*>(it);
+        auto it = this->position->hex_objects.begin();
+        while (it != this->position->hex_objects.end() && k==0){
+            if (  (*it)->get_type()==1){
+                hero* tmp = dynamic_cast<hero*>(*it);
                 tmp->get_damage(this->damage);
                 k=1;
             }
+            it++;
         }
         if (k==0){
             Event* ev=new Event(this, this->SpeedTime);
