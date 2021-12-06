@@ -20,12 +20,13 @@ protected:
 class object
 {
 public:
-    std::string type;
+    int type = 0;
     hexagon* position;
     object(hexagon* position);
     sf::Sprite sprite;
 
-    virtual void destroy()=0;
+    virtual int get_type();
+    virtual void destroy();
     virtual ~object();
 
 protected:
@@ -39,16 +40,21 @@ class hero:public object
 
 public:
     hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int number);
-    int health;
+
+    int type=1;
+    int health = 100;
     action* skills[4];
     int number;
-    int max_mana;
+    int max_mana = 100;
     int cur_mana;
 
+    int get_type();
     void destroy();
     void add_mana(int mana);
+    void get_damage(int damage);
     ~hero();
 private:
+    void swich_action(ActionsList SkillNames[4]);
 
 };
 
@@ -57,12 +63,12 @@ private:
 class projectile: public object, public Action_class
 {
 public:
+    int type = 2;
     projectile(hexagon* position, int Creator);
     std::string name;
     int damage;
     int SpeedTime;
     int Creator;
-
 
     virtual void destroy()=0;
     virtual ~projectile();

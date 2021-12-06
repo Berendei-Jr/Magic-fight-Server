@@ -1,6 +1,7 @@
 #include "../include/projectiles.h"
 #include "../include/EventQueue.h"
 #include "../include/board.h"
+            #include <iostream>
 
 void fireball::TickAction(){
     this->position->owner->ChangeHash();
@@ -8,8 +9,22 @@ void fireball::TickAction(){
         this->position->hex_objects.remove(this);
         this->position=this->position->NextHex(this->direction);
         this->position->hex_objects.push_back(this);
-        Event* ev=new Event(this, this->SpeedTime);
-        this->direction=direction;this->position->owner->event_queue.push(*ev);
+        bool k = 0;
+        for (auto&  it : this->position->hex_objects)
+        {
+            object o = *it;
+            if (it->get_type()==1){
+                hero* tmp = dynamic_cast<hero*>(it);
+                tmp->get_damage(this->damage);
+                k=1;
+            }
+        }
+        if (k==0){
+            Event* ev=new Event(this, this->SpeedTime);
+            this->direction=direction;this->position->owner->event_queue.push(*ev);
+        } else {
+            this->destroy();
+        }
     } else {
         this->destroy();
     }
