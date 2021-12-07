@@ -36,6 +36,12 @@ void hero::swich_action(ActionsList SkillNames[4]){
     }
 }
 
+void hero::make_action(int n_act, int direction){
+    if (this->health>0){
+        this->skills[n_act]->DoIt(direction);
+    }
+}
+
 int hero::get_type(){
     return this->type;
 }
@@ -81,6 +87,6 @@ hero::~hero(){}
 
 void hero::destroy(){
     this->position->DelObject(this);
-    //this->~hero();
+    this->~hero();
 }
 

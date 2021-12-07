@@ -43,17 +43,18 @@ public:
 
     int type=1;
     int health = 100;
-    action* skills[4];
     int number;
     int max_mana = 100;
     int cur_mana;
 
+    void make_action(int n_act, int direction);
     int get_type();
     void destroy();
     void add_mana(int mana);
     void get_damage(int damage);
     ~hero();
 private:
+    action* skills[4];
     void swich_action(ActionsList SkillNames[4]);
 
 };

@@ -57,7 +57,7 @@ int main()
                 if (b){
                     it1 = direct.find(d);
                     if (it1 != direct.end()){
-                        H.skills[it2->second]->DoIt(it1->second);
+                        H.make_action(it2->second, it1->second);
                     }
                     b=false;
                 } else {
