@@ -3,6 +3,24 @@
 #include "../include/board.h"
 #include "../include/projectiles.h"
 #include "action_classes.h"
+#include <iostream>
+#include <fstream>
+
+int give_mana(std::string name){
+    std::ifstream in("/opt/Magic_fight/configs/mana.cfg");
+    std::string tmp_name;
+    int tmp_mana;
+    do {
+        in >> tmp_name >> tmp_mana;
+    } while (tmp_name!=name && tmp_name!="");
+
+    in.close();
+    if (tmp_name==""){
+        return 1000000;
+    }
+    return tmp_mana;
+}
+
 action::action(hero* owner){
     this->owner=owner;
 }
@@ -44,7 +62,9 @@ void make_leap::DoIt(int direction)
     }
 }
 
-make_fireball::make_fireball(hero* owner):action(owner){}
+make_fireball::make_fireball(hero* owner):action(owner){
+    this->mana_costs=give_mana("make_fireball");
+}
 
 void make_fireball::DoIt(int direction)
 {
