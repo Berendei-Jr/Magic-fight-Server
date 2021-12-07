@@ -26,7 +26,7 @@ public:
     make_step(hero* owner);
     void DoIt(int direction);
 private:
-    int mana_costs = 10;
+    int mana_costs;
 };
 
 class make_leap: public action
@@ -35,7 +35,7 @@ public:
     make_leap(hero* owner);
     void DoIt(int direction);
 private:
-    int mana_costs = 30;
+    int mana_costs;
 };
 
 class make_fireball: public action
@@ -44,7 +44,7 @@ public:
     make_fireball(hero* owner);
     void DoIt(int direction);
 private:
-    int mana_costs = 50;
+    int mana_costs;
 };
 
 class passive_action: public action

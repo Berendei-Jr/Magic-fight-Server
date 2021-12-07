@@ -26,7 +26,9 @@ action::action(hero* owner){
 }
 
 
-make_step::make_step(hero* owner):action(owner){}
+make_step::make_step(hero* owner):action(owner){
+    this->mana_costs=give_mana("make_step");
+}
 
 void make_step::DoIt(int direction)
 {
@@ -41,7 +43,9 @@ void make_step::DoIt(int direction)
     }
 }
 
-make_leap::make_leap(hero* owner):action(owner){}
+make_leap::make_leap(hero* owner):action(owner){
+    this->mana_costs=give_mana("make_leap");
+}
 
 void make_leap::DoIt(int direction)
 {
