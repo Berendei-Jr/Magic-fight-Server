@@ -7,8 +7,8 @@ class fireball: public projectile
 public:
     fireball(hexagon* position, int Creator, int direction);
 private:
-    int damage=100;
-    int SpeedTime=500;
+    int damage;
+    int SpeedTime;
     int direction;
     void TickAction();
     void destroy();

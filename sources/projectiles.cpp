@@ -1,7 +1,8 @@
 #include "../include/projectiles.h"
 #include "../include/EventQueue.h"
 #include "../include/board.h"
-            #include <iostream>
+#include <iostream>
+#include <fstream>
 
 void fireball::TickAction(){
     this->position->owner->ChangeHash();
@@ -31,6 +32,10 @@ void fireball::TickAction(){
 }
 
 fireball::fireball(hexagon* position, int Creator, int direction):projectile(position, Creator){
+    std::ifstream in("/opt/Magic_fight/configs/fireball.cfg");
+    in >> this->damage;
+    in >> this->SpeedTime;
+    in.close();
     this->name="fireball";
     this->Creator=Creator;
     sf::Texture *fireball_texture = new sf::Texture;
