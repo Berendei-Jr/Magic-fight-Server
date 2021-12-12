@@ -4,17 +4,13 @@
 #include "../include/board.h"
 #include "../include/klibriry.h"
 #include <SFML/Graphics.hpp>
-//#include <NetModule.hpp>
+#include <Server.hpp>
 
-void CoordinatesAdapter (int* a){
-    const int zx=27;
-    const int zy=47;
-    a[0]=(a[0]+a[0]-a[1])*zx+232;
-    a[1]=207-a[1]*zy;
-}
 int main()
 {
-    //NetModule NM(7777);
+   // net::Server Server(60000);
+  
+  
     const int radius = 5;
     board B(radius);
     char d, act_key;
@@ -39,7 +35,6 @@ int main()
     if (!board_textr.loadFromFile("/home/supsun/Documents/Magic_fight/img/board.png"))
         return EXIT_FAILURE;
     sf::Sprite board(board_textr);
-
     sf::Time duration = sf::milliseconds(16);
     while (window.isOpen())
     {
