@@ -37,8 +37,12 @@ int main()
     sf::Texture hero_texture;
     if (!hero_texture.loadFromFile("/home/supsun/Documents/Magic_fight/img/hero.png"))
         return EXIT_FAILURE;
-    hero H(B.center, hero_texture, hero_actions, 1);
-    hero H2(B.center, hero_texture, hero_actions, 2);
+    hero* heros[2];
+
+    hero H0(B.center, hero_texture, hero_actions, 1);
+    hero H1(B.center, hero_texture, hero_actions, 2);
+    heros[0]=&H0;
+    heros[1]=&H1;
     sf::RenderWindow window(sf::VideoMode(486, 434), "Magic Fight");
     sf::Texture board_textr;
     if (!board_textr.loadFromFile("/home/supsun/Documents/Magic_fight/img/board.png"))
@@ -55,18 +59,19 @@ int main()
             {
                 window.close();
             }
-            if (Server.Ready()){
-                Msg soobch = Server.Get();
-                std::cout << soobch._id<< " " << soobch._data << std::endl;
-                std::stringstream remote;
-                remote << soobch._data;
-                remote >> n_act;
-                remote >> direction;
-                H.make_action(n_act, direction);
-                B.Tick();
-            }
-        }
 
+        }
+        if (Server.Ready()){
+            Msg soobch = Server.Get();
+            std::cout << soobch._id<< " " << soobch._data << std::endl;
+            std::stringstream remote;
+            remote << soobch._data;
+            remote >> n_act;
+            remote >> direction;
+            heros[soobch._id-100]->make_action(n_act, direction);
+
+        }
+        B.Tick();
         if (saved_hash!=B.GetHash())
         {
             saved_hash=B.GetHash();

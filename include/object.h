@@ -22,6 +22,7 @@ class object
 public:
     int type = 0;
     hexagon* position;
+    object()=default;
     object(hexagon* position);
     sf::Sprite sprite;
 
@@ -39,6 +40,7 @@ class hero:public object
 {
 
 public:
+    hero()=default;
     hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int number);
 
     int type=1;
@@ -47,6 +49,7 @@ public:
     int max_mana = 100;
     int cur_mana;
 
+    hero& operator=(const hero& old_hero);
     void make_action(int n_act, int direction);
     int get_type();
     void destroy();
