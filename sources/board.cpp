@@ -12,8 +12,7 @@ hexagon::hexagon(board* owner)
 }
 
 int* hexagon::GetCoordinate(){
-    int* a =new int[2]{this->coordinate[0], this->coordinate[1]};
-    return a;
+     return(new int[2]{this->coordinate[0], this->coordinate[1]});
 }
 
 void hexagon::ChangeCoordinate(int x, int y)

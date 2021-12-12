@@ -3,12 +3,32 @@
 #include "../include/board.h"
 #include "../include/projectiles.h"
 #include "action_classes.h"
+#include <iostream>
+#include <fstream>
+
+int give_mana(std::string name){
+    std::ifstream in("/opt/Magic_fight/configs/mana.cfg");
+    std::string tmp_name;
+    int tmp_mana;
+    do {
+        in >> tmp_name >> tmp_mana;
+    } while (tmp_name!=name && tmp_name!="");
+
+    in.close();
+    if (tmp_name==""){
+        return 1000000;
+    }
+    return tmp_mana;
+}
+
 action::action(hero* owner){
     this->owner=owner;
 }
 
 
-make_step::make_step(hero* owner):action(owner){}
+make_step::make_step(hero* owner):action(owner){
+    this->mana_costs=give_mana("make_step");
+}
 
 void make_step::DoIt(int direction)
 {
@@ -23,7 +43,9 @@ void make_step::DoIt(int direction)
     }
 }
 
-make_leap::make_leap(hero* owner):action(owner){}
+make_leap::make_leap(hero* owner):action(owner){
+    this->mana_costs=give_mana("make_leap");
+}
 
 void make_leap::DoIt(int direction)
 {
@@ -44,7 +66,9 @@ void make_leap::DoIt(int direction)
     }
 }
 
-make_fireball::make_fireball(hero* owner):action(owner){}
+make_fireball::make_fireball(hero* owner):action(owner){
+    this->mana_costs=give_mana("make_fireball");
+}
 
 void make_fireball::DoIt(int direction)
 {
@@ -63,3 +87,13 @@ class_wizard::class_wizard(hero* owner):passive_action(owner){
 }
 
 void class_wizard::DoIt(int direction){}
+
+potion::potion(hero* owner, int amount):action(owner){
+    this->amount=amount;
+}
+
+void potion::DoIt(int direction){}
+
+smoke_grenade::smoke_grenade(hero* owner, int amount):potion(owner, amount){}
+
+void smoke_grenade::DoIt(int diretion){}

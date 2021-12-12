@@ -7,15 +7,16 @@ object::object(hexagon* position)
     this->position=position;
     position->AddObject(this);
 }
+
+int object::get_type(){
+    return this->type;
+}
+
+void object::destroy(){}
+
 object::~object(){}
 
-hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int number):object(position)
-{
-    this->type="hero";
-    this->max_mana=100;
-    this->health=100;
-    this->number=number;
-    this->sprite= sf::Sprite(textr);
+void hero::swich_action(ActionsList SkillNames[4]){
     for(int i = 0; i<4; i++){
         switch (SkillNames[i])
         {
@@ -33,10 +34,25 @@ hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int
             break;
         }
     }
+}
+
+void hero::make_action(int n_act, int direction){
+    if (this->health>0){
+        this->skills[n_act]->DoIt(direction);
+    }
+}
+
+int hero::get_type(){
+    return this->type;
+}
+
+hero::hero(hexagon* position, sf::Texture &textr, ActionsList SkillNames[4], int number):object(position)
+{
+    this->number=number;
+    this->sprite= sf::Sprite(textr);
+    this->swich_action(SkillNames);
     this->cur_mana=this->max_mana;
     new mana_creator(&this->position->owner->event_queue, 1, this, 500);
-    //object* mana_creator
-
 }
 void hero::add_mana(int mana){
     this->cur_mana+=mana;
@@ -44,6 +60,13 @@ void hero::add_mana(int mana){
         this->cur_mana=this->max_mana;
     }
 }
+void hero::get_damage(int damage){
+    this->health-=damage;
+    if(this->health<=0){
+        this->destroy();
+    }
+}
+
 
 Action_class::Action_class(){}
 Action_class::Action_class(int SpeedTime){
