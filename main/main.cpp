@@ -5,10 +5,18 @@
 #include "../include/klibriry.h"
 #include <SFML/Graphics.hpp>
 #include <Server.hpp>
+#include <sstream>
+
+void CoordinatesAdapter (int* a){
+    const int zx=27;
+    const int zy=47;
+    a[0]=(a[0]+a[0]-a[1])*zx+232;
+    a[1]=207-a[1]*zy;
+}
 
 int main()
 {
-   // net::Server Server(60000);
+    net::Server Server(6969);
   
   
     const int radius = 5;
@@ -16,6 +24,7 @@ int main()
     char d, act_key;
     int* a;
     bool b=0;
+    int n_act, direction;
     int saved_hash = -1;
     std::map <char, int> direct = {{'a', 0}, {'w', 1}, {'e', 2}, {'d', 3}, {'x', 4}, {'z', 5}, {'s', 6}};
     std::map <char, int> action_map = {{'k', 0}, {'o', 1}, {'l', 2}, {'p', 3}};
@@ -46,24 +55,18 @@ int main()
             {
                 window.close();
             }
-            if (event.type == sf::Event::KeyPressed)
-            {
-                d = event.key.code + 97;
-                if (b){
-                    it1 = direct.find(d);
-                    if (it1 != direct.end()){
-                        H.make_action(it2->second, it1->second);
-                    }
-                    b=false;
-                } else {
-                    act_key=d;
-                    it2 = action_map.find(act_key);
-                    b=it2 !=action_map.end();
-                }
-
+            if (Server.Ready()){
+                Msg soobch = Server.Get();
+                std::cout << soobch._id<< " " << soobch._data << std::endl;
+                std::stringstream remote;
+                remote << soobch._data;
+                remote >> n_act;
+                remote >> direction;
+                H.make_action(n_act, direction);
+                B.Tick();
             }
         }
-        B.Tick();
+
         if (saved_hash!=B.GetHash())
         {
             saved_hash=B.GetHash();
