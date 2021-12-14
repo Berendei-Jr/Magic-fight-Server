@@ -1,3 +1,5 @@
+#include <utility>
+
 #include "NetConnection.hpp"
 #include "NetThreadSafeQueue.hpp"
 
@@ -6,7 +8,7 @@ struct Msg
     uint32_t _id;
     std::string _data;
     Msg() = delete;
-    Msg(uint32_t id, const std::string& msg): _id(id), _data(msg) {}
+    Msg(uint32_t id, std::string msg): _id(id), _data(std::move(msg)) {}
     friend std::ostream& operator << (std::ostream& out, const Msg& m)
     {
         out << "ID: " << m._id << " Data: " << m._data;
@@ -218,7 +220,7 @@ namespace net
       boost::asio::io_context _context;
       std::thread _thrContext;
       boost::asio::ip::tcp::acceptor _acceptor;
-      uint32_t _IdCounter = 100;
+      uint32_t _IdCounter = 0;
       std::mutex _mtx;
     };
 }
