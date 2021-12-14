@@ -17,7 +17,13 @@ void CoordinatesAdapter (int* a)
 
 int main(int argc, char* argv[])
 {
-    net::Server Server(6969);
+    bool encryption = true;
+    if (argc == 2)
+    {
+        encryption = std::stoi(argv[1]);
+    }
+
+    net::Server Server(6969, encryption);
   
     const int radius = 5;
     board B(radius);
@@ -78,7 +84,7 @@ int main(int argc, char* argv[])
             saved_hash=B.GetHash();
             window.clear();
             window.draw(board);
-            for(auto it=B.all_objects.begin(); it!=B.all_objects.end(); it++){
+            for (auto it=B.all_objects.begin(); it!=B.all_objects.end(); it++){
                 object* temporary = *it;
                 a = temporary->position->GetCoordinate();
                 std::cout << a[0] << " " << a[1]<< std::endl;

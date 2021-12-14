@@ -3,6 +3,7 @@
 
 #include "NetCommon.hpp"
 #include "NetThreadSafeQueue.hpp"
+#include <xtea3_lib/xtea3.h>
 
 namespace net
 {
@@ -16,13 +17,16 @@ namespace net
         };
 
         connection(owner parent, boost::asio::io_context& context,
-                   boost::asio::ip::tcp::socket socket, tsqueue<owned_message>& in_queue) :
-                   _context(context), _socket(std::move(socket)), _in_queue(in_queue)
+                   boost::asio::ip::tcp::socket socket,
+                   tsqueue<owned_message>& in_queue, bool encryption) :
+                   _context(context), _socket(std::move(socket)),
+                   _in_queue(in_queue), _encryption(encryption),
+                   _ptr_xtea(std::make_unique<xtea3>())
         {
             _owner = parent;
         }
 
-        ~connection(){}
+        ~connection() = default;
 
         void ConnectToClient(uint32_t uid = 0)
         {
@@ -40,7 +44,7 @@ namespace net
         {
             if (_owner == owner::client)
             {
-                boost::asio::async_connect(_socket, endpoints, [this](boost::system::error_code ec, boost::asio::ip::tcp::endpoint endpoint)
+                boost::asio::async_connect(_socket, endpoints, [this](boost::system::error_code ec, const boost::asio::ip::tcp::endpoint& endpoint)
                 {
                     if (!ec)
                     {
@@ -107,6 +111,23 @@ namespace net
                                     {
                                         if (!ec)
                                         {
+                                            if (_encryption)
+                                            {
+                                                std::cout << "body.size(): " << _tmp_msg.body.size();
+                                                std::cout << "body.length(): " << _tmp_msg.body.length();
+                                                uint8_t *p_decrypt_data = _ptr_xtea->data_decrypt((uint8_t*)_tmp_msg.body.c_str(), key, _tmp_msg.body.length());
+                                                if (p_decrypt_data == nullptr)
+                                                {
+                                                    std::cerr << "Error decrypt data\n";
+                                                    ReadHeader();
+                                                }
+                                                _tmp_msg.body.clear();
+                                                for (size_t i = 0; i < _ptr_xtea->get_decrypt_size(); i++)
+                                                {
+                                                    _tmp_msg.body.append(
+                                                            reinterpret_cast<const char *>(p_decrypt_data[i]));
+                                                }
+                                            }
                                             std::cout << "[" << _id << "] " << _tmp_msg.body << "\n";
                                             AddToIncomingMsgQueue();
                                         } else {
@@ -177,6 +198,9 @@ namespace net
         owner _owner = owner::server;
         uint32_t _id = 0;
         message _tmp_msg;
+        bool _encryption;
+        std::unique_ptr<xtea3> _ptr_xtea;
+        uint32_t key[8] = {0x12, 0x55, 0xAB, 0xF8, 0x12, 0x45, 0x77, 0x1A};
     };
 }
 

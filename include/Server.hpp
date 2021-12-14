@@ -21,8 +21,8 @@ namespace net
     class Server
     {
     public:
-      explicit Server(uint16_t port) : _acceptor(_context,
-         boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port))
+      Server(uint16_t port, bool encryption) : _acceptor(_context,
+         boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port)), _encryption(encryption)
       {
         Start();
       }
@@ -112,7 +112,7 @@ namespace net
                         std::cout << "[SERVER] New Connection: " << socket.remote_endpoint() << "\n";
                         std::shared_ptr<connection> newconn =
                                 std::make_shared<connection>(connection::owner::server,
-                                                             _context, std::move(socket), _in_queue);
+                                                             _context, std::move(socket), _in_queue, _encryption);
 
                         if (OnClientConnect(newconn))
                         {
@@ -222,5 +222,6 @@ namespace net
       boost::asio::ip::tcp::acceptor _acceptor;
       uint32_t _IdCounter = 0;
       std::mutex _mtx;
+      bool _encryption;
     };
 }
