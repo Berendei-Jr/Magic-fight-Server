@@ -69,7 +69,12 @@ namespace net
               message m;
               m.header.id = MsgTypes::Logic;
               m.header.size = msg._data.size();
-              m.body = msg._data;
+              std::vector<uint8_t> tmp;
+              for (auto& it : msg._data)
+              {
+                  tmp.push_back(it);
+              }
+              m.body = tmp;
               MessageClient(con, m);
           } else {
               std::cerr << "No such client: " << msg._id << "\n";
@@ -184,7 +189,8 @@ namespace net
                   std::cout << "[" << client->GetId() << "] Handshake received!\n";
                   client->Send(msg);
               case MsgTypes::Logic:
-                  Msg tmp = { client->GetId(), msg.body };
+                  std::string str = std::string((char*)msg.body.data());
+                  Msg tmp = { client->GetId(), str };
                   _in_logic_messages.push_back(tmp);
           }
       }

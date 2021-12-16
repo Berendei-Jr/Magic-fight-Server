@@ -90,9 +90,13 @@ namespace net
                                     {
                                         if (!ec)
                                         {
-                                            if (_tmp_msg.header.size > 0)
+                                            if (_tmp_msg.header.size > 100)
+                                            {
+                                                ReadHeader();
+                                            } else if (_tmp_msg.header.size)
                                             {
                                                 _tmp_msg.body.resize(_tmp_msg.header.size);
+                                                std::cout << "size of body (header): " << _tmp_msg.header.size << "\n";
                                                 ReadBody();
                                             } else {
                                                 AddToIncomingMsgQueue();
@@ -111,22 +115,24 @@ namespace net
                                     {
                                         if (!ec)
                                         {
+                                            std::cout << "GOT MSG: " << _tmp_msg.body;
                                             if (_encryption)
                                             {
-                                                std::cout << "body.size(): " << _tmp_msg.body.size();
-                                                std::cout << "body.length(): " << _tmp_msg.body.length();
-                                                uint8_t *p_decrypt_data = _ptr_xtea->data_decrypt((uint8_t*)_tmp_msg.body.c_str(), key, _tmp_msg.body.length());
-                                                if (p_decrypt_data == nullptr)
+                                                uint8_t* decr_data = _ptr_xtea->data_decrypt(_tmp_msg.body.data(), key, _tmp_msg.size());
+                                                if (decr_data == nullptr)
                                                 {
-                                                    std::cerr << "Error decrypt data\n";
+                                                    std::cerr << "Error decrypt\n";
                                                     ReadHeader();
                                                 }
                                                 _tmp_msg.body.clear();
-                                                for (size_t i = 0; i < _ptr_xtea->get_decrypt_size(); i++)
+                                                std::cout << "DECR_PTR: ";
+                                                for (size_t i = 0; i < _ptr_xtea->get_decrypt_size() - 1; i++)
                                                 {
-                                                    _tmp_msg.body.append(
-                                                            reinterpret_cast<const char *>(p_decrypt_data[i]));
+                                                    std::cout << decr_data[i];
+                                                    _tmp_msg.body.push_back(decr_data[i]);
+                                                    std::cout << _tmp_msg.body[i];
                                                 }
+                                                std::cout << "\n";
                                             }
                                             std::cout << "[" << _id << "] " << _tmp_msg.body << "\n";
                                             AddToIncomingMsgQueue();
