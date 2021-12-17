@@ -1,5 +1,6 @@
 #include <utility>
 
+#include "NetDatabase.hpp"
 #include "NetConnection.hpp"
 #include "NetThreadSafeQueue.hpp"
 

@@ -3,7 +3,7 @@
 
 #include "NetCommon.hpp"
 #include "NetThreadSafeQueue.hpp"
-#include <xtea3_lib/xtea3.h>
+#include <third-party/xtea3_lib/xtea3.h>
 
 namespace net
 {
