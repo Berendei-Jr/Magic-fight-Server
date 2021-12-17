@@ -22,7 +22,9 @@ namespace net
     {
     public:
       Server(uint16_t port, bool encryption) : _acceptor(_context,
-         boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port)), _encryption(encryption)
+         boost::asio::ip::tcp::endpoint(
+                 boost::asio::ip::tcp::v4(), port)),
+                 _encryption(encryption), _ptr_xtea(std::make_shared<xtea3>())
       {
         Start();
       }
@@ -68,13 +70,26 @@ namespace net
           {
               message m;
               m.header.id = MsgTypes::Logic;
-              m.header.size = msg._data.size();
-              std::vector<uint8_t> tmp;
-              for (auto& it : msg._data)
+              if (_encryption)
               {
-                  tmp.push_back(it);
+                  uint8_t* tmp_ptr = _ptr_xtea->data_crypt((uint8_t *) msg._data.c_str(), key, msg._data.length() + 1);
+                  if (tmp_ptr == nullptr) {
+                      std::cerr << "Error encrypt message\n";
+                  }
+                  m.header.size = _ptr_xtea->get_crypt_size();
+                  m.body;
+                  for (size_t i = 0; i < m.header.size; i++)
+                  {
+                      m.body.push_back(tmp_ptr[i]);
+                  }
+              } else {
+                  m.header.size = msg._data.size();
+                  m.body;
+                  for (auto& it : msg._data)
+                  {
+                      m.body.push_back(it);
+                  }
               }
-              m.body = tmp;
               MessageClient(con, m);
           } else {
               std::cerr << "No such client: " << msg._id << "\n";
@@ -117,7 +132,7 @@ namespace net
                         std::cout << "[SERVER] New Connection: " << socket.remote_endpoint() << "\n";
                         std::shared_ptr<connection> newconn =
                                 std::make_shared<connection>(connection::owner::server,
-                                                             _context, std::move(socket), _in_queue, _encryption);
+                                                             _context, std::move(socket), _in_queue, _encryption, _ptr_xtea);
 
                         if (OnClientConnect(newconn))
                         {
@@ -229,5 +244,7 @@ namespace net
       uint32_t _IdCounter = 0;
       std::mutex _mtx;
       bool _encryption;
+      std::shared_ptr<xtea3> _ptr_xtea;
+      uint32_t key[8] = {0x12, 0x55, 0xAB, 0xF8, 0x12, 0x45, 0x77, 0x1A};
     };
 }

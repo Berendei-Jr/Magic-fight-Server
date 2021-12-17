@@ -18,10 +18,11 @@ namespace net
 
         connection(owner parent, boost::asio::io_context& context,
                    boost::asio::ip::tcp::socket socket,
-                   tsqueue<owned_message>& in_queue, bool encryption) :
+                   tsqueue<owned_message>& in_queue, bool encryption,
+                   std::shared_ptr<xtea3> ptr) :
                    _context(context), _socket(std::move(socket)),
                    _in_queue(in_queue), _encryption(encryption),
-                   _ptr_xtea(std::make_unique<xtea3>())
+                   _ptr_xtea(ptr)
         {
             _owner = parent;
         }
@@ -96,7 +97,6 @@ namespace net
                                             } else if (_tmp_msg.header.size)
                                             {
                                                 _tmp_msg.body.resize(_tmp_msg.header.size);
-                                                std::cout << "size of body (header): " << _tmp_msg.header.size << "\n";
                                                 ReadBody();
                                             } else {
                                                 AddToIncomingMsgQueue();
@@ -115,7 +115,6 @@ namespace net
                                     {
                                         if (!ec)
                                         {
-                                            std::cout << "GOT MSG: " << _tmp_msg.body;
                                             if (_encryption)
                                             {
                                                 uint8_t* decr_data = _ptr_xtea->data_decrypt(_tmp_msg.body.data(), key, _tmp_msg.size());
@@ -125,14 +124,10 @@ namespace net
                                                     ReadHeader();
                                                 }
                                                 _tmp_msg.body.clear();
-                                                std::cout << "DECR_PTR: ";
                                                 for (size_t i = 0; i < _ptr_xtea->get_decrypt_size() - 1; i++)
                                                 {
-                                                    std::cout << decr_data[i];
                                                     _tmp_msg.body.push_back(decr_data[i]);
-                                                    std::cout << _tmp_msg.body[i];
                                                 }
-                                                std::cout << "\n";
                                             }
                                             std::cout << "[" << _id << "] " << _tmp_msg.body << "\n";
                                             AddToIncomingMsgQueue();
@@ -205,7 +200,7 @@ namespace net
         uint32_t _id = 0;
         message _tmp_msg;
         bool _encryption;
-        std::unique_ptr<xtea3> _ptr_xtea;
+        std::shared_ptr<xtea3> _ptr_xtea;
         uint32_t key[8] = {0x12, 0x55, 0xAB, 0xF8, 0x12, 0x45, 0x77, 0x1A};
     };
 }
