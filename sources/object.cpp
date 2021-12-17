@@ -16,6 +16,7 @@ void object::destroy(){}
 
 object::~object(){}
 
+
 void hero::swich_action(ActionsList SkillNames[4]){
     for(int i = 0; i<4; i++){
         switch (SkillNames[i])
