@@ -24,7 +24,8 @@ int main(int argc, char* argv[])
     }
 
     net::Server Server(6969, encryption);
-    Database db("db/db.json");
+    std::string path = "db/db.json";
+    Database db(path);
 
     const int radius = 5;
     board B(radius);
