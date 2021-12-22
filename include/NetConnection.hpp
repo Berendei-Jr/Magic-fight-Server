@@ -84,6 +84,11 @@ namespace net
             return _id;
         }
 
+        std::string GetName() const
+        {
+            return _name;
+        }
+
         void ReadHeader()
         {
             boost::asio::async_read(_socket, boost::asio::buffer(&_tmp_msg.header, sizeof(mes_header)),
@@ -129,7 +134,7 @@ namespace net
                                                     _tmp_msg.body.push_back(decr_data[i]);
                                                 }
                                             }
-                                            std::cout << "[" << _id << "] " << _tmp_msg.body << "\n";
+                                           // std::cout << "[" << _id << "] " << _tmp_msg.body << "\n";
                                             AddToIncomingMsgQueue();
                                         } else {
                                             std::cout << "[" << _id << "] Read body failed: " << ec.message() << "\n";
@@ -191,6 +196,16 @@ namespace net
             ReadHeader();
         }
 
+        bool Logged() const
+        {
+            return !_name.empty();
+        }
+
+        void SetName(const std::string& name)
+        {
+            _name = name;
+        }
+
     private:
         boost::asio::ip::tcp::socket _socket;
         boost::asio::io_context& _context;
@@ -198,6 +213,7 @@ namespace net
         tsqueue<owned_message>& _in_queue;
         owner _owner = owner::server;
         uint32_t _id = 0;
+        std::string _name;
         message _tmp_msg;
         bool _encryption;
         std::shared_ptr<xtea3> _ptr_xtea;

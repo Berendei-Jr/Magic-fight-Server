@@ -1,11 +1,9 @@
-#include <iostream>
 #include <map>
 #include "../include/object.h"
 #include "../include/board.h"
 #include "../include/klibriry.h"
 #include <SFML/Graphics.hpp>
 #include <Server.hpp>
-#include <sstream>
 
 void CoordinatesAdapter (int* a)
 {
@@ -24,8 +22,6 @@ int main(int argc, char* argv[])
     }
 
     net::Server Server(6969, encryption);
-    std::string path = "db/db.json";
-    Database db(path);
 
     const int radius = 5;
     board B(radius);
@@ -72,14 +68,13 @@ int main(int argc, char* argv[])
         if (Server.Ready())
         {
             Msg tmp = Server.Get();
+           // std::cout << "ТУТ\n";
             std::cout << tmp << std::endl;
             std::stringstream remote;
             remote << tmp._data;
             remote >> n_act;
             remote >> direction;
             heros[tmp._id]->make_action(n_act, direction);
-            tmp._data = "TEST BACK";
-            Server.Send(tmp);
         }
         B.Tick();
         if (saved_hash != B.GetHash())

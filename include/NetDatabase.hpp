@@ -31,7 +31,7 @@ void to_json(nlohmann::json& j, const user_t& u) {
     j.push_back({ {"name", u.name}, {"hash", u.hash_pass} });
 }
 
-class Database : public std::enable_shared_from_this<Database>
+class Database
 {
 public:
     explicit Database(const std::string& path)
@@ -59,6 +59,8 @@ public:
     bool Register(const std::string& name, const std::string& pass)
     {
         std::scoped_lock<std::mutex> lock(_mtx);
+        if (name.empty() || pass.empty())
+            return false;
         for (auto& it : _data)
         {
             if (it.name == name)
@@ -97,13 +99,15 @@ public:
 private:
     void Stop()
     {
+        _stop = true;
+        _cv.notify_one();
         if (_thr_db_update.joinable())
             _thr_db_update.join();
     }
 
     void Update(const std::string& path)
     {
-        while (true) {
+        while (!_stop) {
             std::unique_lock<std::mutex> ul(_cv_mtx);
             _cv.wait(ul);
 
@@ -122,6 +126,7 @@ private:
         }
     }
 
+    bool _stop = false;
     std::thread _thr_db_update;
     nlohmann::json _db;
     std::vector<user_t> _data;
