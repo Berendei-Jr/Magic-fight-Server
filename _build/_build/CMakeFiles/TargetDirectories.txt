@@ -1,0 +1,4 @@
+/home/supsun/Documents/Magic_fight/_build/_build/CMakeFiles/server_app.dir
+/home/supsun/Documents/Magic_fight/_build/_build/CMakeFiles/serv.dir
+/home/supsun/Documents/Magic_fight/_build/_build/CMakeFiles/edit_cache.dir
+/home/supsun/Documents/Magic_fight/_build/_build/CMakeFiles/rebuild_cache.dir
