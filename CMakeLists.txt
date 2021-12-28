@@ -33,17 +33,19 @@ add_library(${PROJECT_NAME} STATIC
         include/NetCommon.hpp
         include/NetThreadSafeQueue.hpp
         include/NetConnection.hpp
-        xtea3_lib/xtea3.h
-        xtea3_lib/xtea3.cpp
+        third-party/xtea3_lib/xtea3.h
+        third-party/xtea3_lib/xtea3.cpp
 )
 
 #hunter_add_package(SFML)
+hunter_add_package(nlohmann_json)
 
 find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(Threads)
 find_package(Boost CONFIG REQUIRED)
 find_package(Boost CONFIG REQUIRED system)
+find_package(nlohmann_json CONFIG REQUIRED)
 
 add_executable(serv
         main/main.cpp
@@ -56,7 +58,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "${OPENGL_INCLUDE_DIRS}"
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/img>"
   "${BOOST_ROOT}/include"
-
+  "${NLOHMANN_JSON_ROOT}/include/nlohmann"
 )
 
-target_link_libraries(serv PUBLIC ${PROJECT_NAME} Threads::Threads ${OPENGL_LIBRARIES} sfml-graphics Boost::boost Boost::system)
+target_link_libraries(serv PUBLIC ${PROJECT_NAME} nlohmann_json::nlohmann_json Threads::Threads ${OPENGL_LIBRARIES} sfml-graphics Boost::boost Boost::system)

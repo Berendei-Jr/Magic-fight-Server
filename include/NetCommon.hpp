@@ -24,7 +24,9 @@ namespace net
     enum class MsgTypes : uint32_t
     {
         Handshake,
-        Logic
+        Logic,
+        Register,
+        Login
     };
 
     struct mes_header
@@ -48,7 +50,7 @@ namespace net
             out << "ID: " << int(msg.header.id) << " Size: " << msg.header.size << " Body:";
             for (auto& it: msg.body)
             {
-                out << " " << it;
+                out << it;
             }
             out << "\n";
             return out;

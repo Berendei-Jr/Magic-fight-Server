@@ -1,5 +1,7 @@
 #include <utility>
+#include <sstream>
 
+#include "NetDatabase.hpp"
 #include "NetConnection.hpp"
 #include "NetThreadSafeQueue.hpp"
 
@@ -7,7 +9,7 @@ struct Msg
 {
     uint32_t _id;
     std::string _data;
-    Msg() = delete;
+    Msg() = default;
     Msg(uint32_t id, std::string msg): _id(id), _data(std::move(msg)) {}
     friend std::ostream& operator << (std::ostream& out, const Msg& m)
     {
@@ -62,14 +64,19 @@ namespace net
           return _in_logic_messages.size();
       }  
 
-      void Send(const Msg& msg)
+      void Send(const Msg &msg, int type = 0)
       {
           std::unique_lock<std::mutex> ul(_mtx);
           std::shared_ptr<connection> con = GetConn(msg._id);
           if (con != nullptr)
           {
               message m;
-              m.header.id = MsgTypes::Logic;
+              if (!type)
+                  m.header.id = MsgTypes::Logic;
+              else if (type == 1)
+                  m.header.id = MsgTypes::Register;
+              else if (type == 2)
+                  m.header.id = MsgTypes::Login;
               if (_encryption)
               {
                   uint8_t* tmp_ptr = _ptr_xtea->data_crypt((uint8_t *) msg._data.c_str(), key, msg._data.length() + 1);
@@ -198,16 +205,78 @@ namespace net
 
       void OnMessage(std::shared_ptr<connection> client, message& msg)
       {
+          std::string str, name, pass;
+          Msg tmp;
+          std::stringstream sstream;
           switch (msg.header.id)
           {
               case MsgTypes::Handshake:
                   std::cout << "[" << client->GetId() << "] Handshake received!\n";
-                  client->Send(msg);
+                 // client->Send(msg);
+                  break;
               case MsgTypes::Logic:
-                  std::string str = std::string((char*)msg.body.data());
-                  Msg tmp = { client->GetId(), str };
-                  _in_logic_messages.push_back(tmp);
+                  if (client->Logged())
+                  {
+                      str = std::string((char*)msg.body.data());
+                      tmp = Msg{ client->GetId(), str };
+                      _in_logic_messages.push_back(tmp);
+                      break;
+                  } else {
+                      std::cerr << "[" << client->GetId() << "] Is not logged!\n";
+                      break;
+                  }
+              case MsgTypes::Register:
+                  str = std::string((char*)msg.body.data());
+                  sstream << str.data();
+                  sstream >> name;
+                  sstream >> pass;
+
+                  if (Register(name, pass)) //register successful
+                  {
+                      tmp._id = client->GetId();
+                      tmp._data = "1";
+                      Send(tmp);
+                      std::cout << "reg approved\n";
+                  } else {
+                      tmp._id = client->GetId();
+                      tmp._data = "0";
+                      Send(tmp, 1);
+                      std::cout << "reg not approved\n";
+                  }
+                  break;
+              case MsgTypes::Login:
+                  str = std::string((char*)msg.body.data());
+                  sstream << str.data();
+                  sstream >> name;
+                  sstream >> pass;
+
+                  if (Login(name, pass))
+                  {
+                      tmp._id = client->GetId();
+                      tmp._data = "1";
+                      Send(tmp, 2);
+                      client->SetName(name);
+                      std::cout << "login approved\n";
+                  } else {
+                      tmp._id = client->GetId();
+                      tmp._data = "0";
+                      Send(tmp);
+                      std::cout << "login not approved\n";
+                  }
+                  break;
+              default:
+                  break;
           }
+      }
+
+      bool Register(const std::string& name, const std::string& pass)
+      {
+          return _db->Register(name, pass);
+      }
+
+      bool Login(const std::string& name, const std::string& pass)
+      {
+        return _db->Login(name, pass);
       }
 
       void Update(size_t MaxMessages = -1, bool Wait = false)
@@ -236,6 +305,8 @@ namespace net
 
       tsqueue<Msg> _in_logic_messages;
 
+      std::string _db_path = "db/db.json";
+      std::unique_ptr<Database> _db = std::make_unique<Database>(_db_path);
       tsqueue<owned_message> _in_queue;
       std::deque<std::shared_ptr<connection>> _connections;
       boost::asio::io_context _context;
