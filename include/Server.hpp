@@ -1,3 +1,7 @@
+#include <utility>
+#include <sstream>
+
+#include "NetDatabase.hpp"
 #include "NetConnection.hpp"
 #include "NetThreadSafeQueue.hpp"
 
@@ -5,8 +9,8 @@ struct Msg
 {
     uint32_t _id;
     std::string _data;
-    Msg() = delete;
-    Msg(uint32_t id, const std::string& msg): _id(id), _data(msg) {}
+    Msg() = default;
+    Msg(uint32_t id, std::string msg): _id(id), _data(std::move(msg)) {}
     friend std::ostream& operator << (std::ostream& out, const Msg& m)
     {
         out << "ID: " << m._id << " Data: " << m._data;
@@ -19,8 +23,10 @@ namespace net
     class Server
     {
     public:
-      explicit Server(uint16_t port) : _acceptor(_context,
-         boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port))
+      Server(uint16_t port, bool encryption) : _acceptor(_context,
+         boost::asio::ip::tcp::endpoint(
+                 boost::asio::ip::tcp::v4(), port)),
+                 _encryption(encryption), _ptr_xtea(std::make_shared<xtea3>())
       {
         Start();
       }
@@ -58,16 +64,39 @@ namespace net
           return _in_logic_messages.size();
       }  
 
-      void Send(const Msg& msg)
+      void Send(const Msg &msg, int type = 0)
       {
           std::unique_lock<std::mutex> ul(_mtx);
           std::shared_ptr<connection> con = GetConn(msg._id);
           if (con != nullptr)
           {
               message m;
-              m.header.id = MsgTypes::Logic;
-              m.header.size = msg._data.size();
-              m.body = msg._data;
+              if (!type)
+                  m.header.id = MsgTypes::Logic;
+              else if (type == 1)
+                  m.header.id = MsgTypes::Register;
+              else if (type == 2)
+                  m.header.id = MsgTypes::Login;
+              if (_encryption)
+              {
+                  uint8_t* tmp_ptr = _ptr_xtea->data_crypt((uint8_t *) msg._data.c_str(), key, msg._data.length() + 1);
+                  if (tmp_ptr == nullptr) {
+                      std::cerr << "Error encrypt message\n";
+                  }
+                  m.header.size = _ptr_xtea->get_crypt_size();
+                  m.body;
+                  for (size_t i = 0; i < m.header.size; i++)
+                  {
+                      m.body.push_back(tmp_ptr[i]);
+                  }
+              } else {
+                  m.header.size = msg._data.size();
+                  m.body;
+                  for (auto& it : msg._data)
+                  {
+                      m.body.push_back(it);
+                  }
+              }
               MessageClient(con, m);
           } else {
               std::cerr << "No such client: " << msg._id << "\n";
@@ -110,7 +139,7 @@ namespace net
                         std::cout << "[SERVER] New Connection: " << socket.remote_endpoint() << "\n";
                         std::shared_ptr<connection> newconn =
                                 std::make_shared<connection>(connection::owner::server,
-                                                             _context, std::move(socket), _in_queue);
+                                                             _context, std::move(socket), _in_queue, _encryption, _ptr_xtea);
 
                         if (OnClientConnect(newconn))
                         {
@@ -176,15 +205,78 @@ namespace net
 
       void OnMessage(std::shared_ptr<connection> client, message& msg)
       {
+          std::string str, name, pass;
+          Msg tmp;
+          std::stringstream sstream;
           switch (msg.header.id)
           {
               case MsgTypes::Handshake:
                   std::cout << "[" << client->GetId() << "] Handshake received!\n";
-                  client->Send(msg);
+                 // client->Send(msg);
+                  break;
               case MsgTypes::Logic:
-                  Msg tmp = { client->GetId(), msg.body };
-                  _in_logic_messages.push_back(tmp);
+                  if (client->Logged())
+                  {
+                      str = std::string((char*)msg.body.data());
+                      tmp = Msg{ client->GetId(), str };
+                      _in_logic_messages.push_back(tmp);
+                      break;
+                  } else {
+                      std::cerr << "[" << client->GetId() << "] Is not logged!\n";
+                      break;
+                  }
+              case MsgTypes::Register:
+                  str = std::string((char*)msg.body.data());
+                  sstream << str.data();
+                  sstream >> name;
+                  sstream >> pass;
+
+                  if (Register(name, pass)) //register successful
+                  {
+                      tmp._id = client->GetId();
+                      tmp._data = "1";
+                      Send(tmp);
+                      std::cout << "reg approved\n";
+                  } else {
+                      tmp._id = client->GetId();
+                      tmp._data = "0";
+                      Send(tmp, 1);
+                      std::cout << "reg not approved\n";
+                  }
+                  break;
+              case MsgTypes::Login:
+                  str = std::string((char*)msg.body.data());
+                  sstream << str.data();
+                  sstream >> name;
+                  sstream >> pass;
+
+                  if (Login(name, pass))
+                  {
+                      tmp._id = client->GetId();
+                      tmp._data = "1";
+                      Send(tmp, 2);
+                      client->SetName(name);
+                      std::cout << "login approved\n";
+                  } else {
+                      tmp._id = client->GetId();
+                      tmp._data = "0";
+                      Send(tmp);
+                      std::cout << "login not approved\n";
+                  }
+                  break;
+              default:
+                  break;
           }
+      }
+
+      bool Register(const std::string& name, const std::string& pass)
+      {
+          return _db->Register(name, pass);
+      }
+
+      bool Login(const std::string& name, const std::string& pass)
+      {
+        return _db->Login(name, pass);
       }
 
       void Update(size_t MaxMessages = -1, bool Wait = false)
@@ -213,12 +305,17 @@ namespace net
 
       tsqueue<Msg> _in_logic_messages;
 
+      std::string _db_path = "db/db.json";
+      std::unique_ptr<Database> _db = std::make_unique<Database>(_db_path);
       tsqueue<owned_message> _in_queue;
       std::deque<std::shared_ptr<connection>> _connections;
       boost::asio::io_context _context;
       std::thread _thrContext;
       boost::asio::ip::tcp::acceptor _acceptor;
-      uint32_t _IdCounter = 100;
+      uint32_t _IdCounter = 0;
       std::mutex _mtx;
+      bool _encryption;
+      std::shared_ptr<xtea3> _ptr_xtea;
+      uint32_t key[8] = {0x12, 0x55, 0xAB, 0xF8, 0x12, 0x45, 0x77, 0x1A};
     };
 }
