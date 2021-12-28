@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.12)
 
+
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+option(BUILD_TESTS "Build tests" ON)
 
 include("cmake/HunterGate.cmake")
 
@@ -33,10 +37,12 @@ add_library(${PROJECT_NAME} STATIC
         include/NetCommon.hpp
         include/NetThreadSafeQueue.hpp
         include/NetConnection.hpp
+
 )
 
 #hunter_add_package(SFML)
 
+find_package(GTest REQUIRED)
 find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(Threads)
@@ -46,6 +52,8 @@ find_package(Boost CONFIG REQUIRED system)
 add_executable(serv
         main/main.cpp
 )
+
+
 
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
@@ -58,3 +66,14 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 
 target_link_libraries(serv PUBLIC ${PROJECT_NAME} Threads::Threads ${OPENGL_LIBRARIES} sfml-graphics Boost::boost Boost::system)
+
+
+if(BUILD_TESTS)
+  add_executable(tests
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
+  )
+  target_link_libraries(tests ${PROJECT_NAME} GTest::gtest_main ${OPENGL_LIBRARIES} sfml-graphics)
+  enable_testing()
+  add_test(NAME unit_tests COMMAND tests)
+endif()
+

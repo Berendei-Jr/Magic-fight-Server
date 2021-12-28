@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/serv.dir/main/main.cpp.o -o serv  libserver_app.a /usr/lib/libOpenGL.so /usr/lib/libGLX.so /usr/lib/libGLU.so /usr/lib/libsfml-graphics.so.2.5.1 /usr/lib/libboost_system.so.1.76.0 -lpthread /usr/lib/libsfml-window.so.2.5.1 /usr/lib/libsfml-system.so.2.5.1 
