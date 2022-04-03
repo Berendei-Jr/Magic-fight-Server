@@ -37,9 +37,11 @@ add_library(${PROJECT_NAME} STATIC
         include/NetCommon.hpp
         include/NetThreadSafeQueue.hpp
         include/NetConnection.hpp
-
+        include/Server.hpp
+        include/NetDatabase.hpp
         third-party/xtea3_lib/xtea3.h
         third-party/xtea3_lib/xtea3.cpp
+        db/db.json
 )
 
 #hunter_add_package(SFML)

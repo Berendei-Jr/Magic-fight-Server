@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 6.0.0, 2021-12-28T13:24:53. -->
+<!-- Written by QtCreator 6.0.0, 2021-12-29T16:28:12. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -73,6 +73,7 @@
     <value type="Qt::CheckState" key="1@/home/supsun/Documents/Magic_fight/tests/test.cpp:board">Checked</value>
     <value type="Qt::CheckState" key="1@/home/supsun/Documents/Magic_fight/tests/test.cpp:fireball">Checked</value>
     <value type="Qt::CheckState" key="1@/home/supsun/Documents/Magic_fight/tests/test.cpp:hero">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/supsun/Documents/Magic_fight/tests/test.cpp:mana">Checked</value>
     <value type="Qt::CheckState" key="1@/home/supsun/Documents/Magic_fight/tests/test.cpp:move">Checked</value>
     <value type="Qt::CheckState" key="1@/home/supsun/Documents/Magic_fight/tests/test.cpp:move1">Checked</value>
     <value type="Qt::CheckState" key="1@/home/supsun/Documents/Magic_fight/tests/test.cpp:test1">Checked</value>
