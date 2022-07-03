@@ -1,5 +1,5 @@
 # Magic_fight
-## Серверное приложение для игры Magic Fight (логика движка создана supsun-sockol)
+## Серверное приложение для игры Magic Fight (логика движка создана [supsun-sockol](https://github.com/supsun-sockol))
 
 Для запуска сети необходимо использовать команду:
 ```
